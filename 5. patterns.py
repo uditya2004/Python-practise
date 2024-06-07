@@ -441,7 +441,7 @@ n=4
 #================================
 
 """
-Input: ‘N’ = 3
+Input: "N" = 3
 
 Output: 
 A
@@ -454,6 +454,68 @@ C C C
 #         print(chr(65 +i), end= " ")
 #     print()
 
+#================================
 
+"""
+    A      4 space both side
+  A B A    2 space both side
+A B C B A  0 space both side
+
+n = 3
+
+------------
+A 0 space
+
+n=1
+----
+
+  A  2 space  
+A B A  0 space
+
+n=2
+"""
+
+# n=3
+# for i in range(0,n):
+    
+#     #printing space
+#     for j in range(0, n-1-i):
+#         print(" ",end="")
+    
+#     #printing alphabets
+#     character = 64
+#     for k in range(0,i+1):
+#         character +=1
+#         print(chr(character), end= " ")
         
     
+#     #printing last alphabets
+#     for l in range(0,i):
+#         character -=1
+#         print(chr(character), end = " ")
+#     print()
+    
+#ALTERNATE METHOD
+# n=6
+# for i in range(0,n):
+        
+#     #print space in same row
+#     for j in range(0,n-1-i):
+#         print(" ",end="")
+    
+#     #printing alphabets
+#     character = 64
+#     for k in range(0,2*i+1):
+#         if k<=(2*i+1)//2:
+#             character +=1
+#             print(chr(character), end= " ")
+        
+#         else:
+#             character -=1
+#             print(chr(character), end = " ")
+            
+#     #print space in same row
+#     for l in range(0,n-1-i):
+#         print(" ",end="")
+#     print() #end line before we move to next row
+        
