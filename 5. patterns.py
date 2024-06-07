@@ -410,3 +410,25 @@ n= 4
 #     print()
 
 #======================================
+"""
+
+Sample Output 2 :
+A B C D
+A B C
+A B
+A
+
+n=4
+"""
+
+n=4
+for i in range(n,0,-1):
+    character = 65
+    for j in range(i):
+      print(chr(character), end = " ")
+      character += 1
+    print()
+
+
+        
+    
