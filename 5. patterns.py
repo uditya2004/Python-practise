@@ -405,11 +405,11 @@ n= 4
 # print(ord("E"))
 # print(ord("F"))
 
-n=5
-for i in range(1,n+1):
-    character = 65
-    for j in range(0,i):
-      print(chr(character), end= " ")
-      character +=1
-    character =65
-    print()
+# n=5
+# for i in range(1,n+1):
+#     character = 65
+#     for j in range(0,i):
+#       print(chr(character), end= " ")
+#       character +=1
+#     character =65
+#     print()
