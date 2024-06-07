@@ -421,13 +421,38 @@ A
 n=4
 """
 
-n=4
-for i in range(n,0,-1):
-    character = 65
-    for j in range(i):
-      print(chr(character), end = " ")
-      character += 1
-    print()
+# n=4
+# for i in range(n,0,-1):
+#     character = 65
+#     for j in range(i):
+#       print(chr(character), end = " ")
+#       character += 1
+#     print()
+
+#ALTERNATE CODE
+# n=4
+# for i in range(n,0,-1):
+#     character = 65
+#     for j in range(0,i):
+#       print(chr(65+j), end = " ")
+#     print()
+
+
+#================================
+
+"""
+Input: ‘N’ = 3
+
+Output: 
+A
+B B
+C C C
+"""
+# n=3
+# for i in range(0,n):
+#     for j in range(i+1):
+#         print(chr(65 +i), end= " ")
+#     print()
 
 
         
