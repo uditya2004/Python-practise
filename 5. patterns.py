@@ -388,22 +388,10 @@ n= 4
 #     num += 1     #This moves to the next row, increasing the number of characters to print
 #     print()      #This moves to the next line for the next row
 
-
-#ALTERNATE METHOD
-# str1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-# for i in range(1,n+1):
-#     for j in range(0,i):
-#       print(str1[j], end= " ")
-#     print()
-
-
-        
+#-------------
 # print(ord("A"))
-# print(ord("B"))
-# print(ord("C"))
-# print(ord("D"))
-# print(ord("E"))
-# print(ord("F"))
+# print(chr("A"))
+#-------------
 
 # n=5
 # for i in range(1,n+1):
@@ -412,4 +400,11 @@ n= 4
 #       print(chr(character), end= " ")
 #       character +=1
 #     character =65
+#     print()
+
+#ALTERNATE METHOD
+# str1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# for i in range(1,n+1):
+#     for j in range(0,i):
+#       print(str1[j], end= " ")
 #     print()
