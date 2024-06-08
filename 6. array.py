@@ -27,6 +27,6 @@ a= array.array("i",[2,1,4,3])
 
 #SORT
 # As "sort()" is for array , we need to convert array into list first.
-lst= list(a)
-lst.sort()
-print(lst)
+# lst= list(a)
+# lst.sort()
+# print(lst)
