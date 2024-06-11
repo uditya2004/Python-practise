@@ -1,4 +1,6 @@
 """
+We are swapping start and end element , then move both start and end pointers inwards and swap again.
+
 1. in odd length list star and end index pointers will overlap(becomes same).
 2. in even length list , in final iteration, startindex moves ahead of endindex.
 """
