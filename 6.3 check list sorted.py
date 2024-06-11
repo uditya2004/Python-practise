@@ -26,4 +26,3 @@ if checksort(l):
 
 else:
     print("No")
-
