@@ -10,17 +10,15 @@
 def checksort(list):
     if len(list) <=1:
         return True
-    
-    prev=list[0]
-    for i in list[1:]:            
-        if i< prev:
+      
+    for i in range(1,len(list)):  # start with 1, so in 1st iteration index 1 is compared with index 0. If we start with 0, then index 0 will be compared with -1
+        if list[i]<list[i-1]:
             return False
-        
         prev = i
     
     return True
 
-l=[1,2,4,3]
+l=[1,2,4,5]
 if checksort(l):
     print("Yes")
 
