@@ -37,7 +37,7 @@
 def move(lst):
     j=None  #pointing on the zero
     k=None  
-    for i in range(0,len(lst)):
+    for i in range(0,len(lst)):  # O(N)
         if lst[i]==0:
             j=i
             k= j+1
