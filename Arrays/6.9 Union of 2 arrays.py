@@ -69,7 +69,6 @@ def union(lst1,lst2):
     return ans
 
 
-#[1,2,3,]
 arr1 = [1,2,3,4,5]   #i
 arr2 = [2,3,4,4,5,6] #j
 print(union(arr1,arr2))
