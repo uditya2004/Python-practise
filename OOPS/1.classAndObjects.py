@@ -1,6 +1,6 @@
 """
 Naming conventions:
-1. object = instance (eg : x,y,z in code below)
+1. object or instance =  (eg : x,y,z in code below)
 2. Attribute = Instance variable  (self.name)
 3. method -> open_restaurent , __init__ , describe_ restaurent
 4. __init__ = special method called "constructor"
