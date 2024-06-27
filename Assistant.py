@@ -9,7 +9,7 @@ import keyboard
 import pythoncom
 
 # Set the environment variable directly for testing
-os.environ["GROQ_API_KEY"] = "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"
+os.environ["GROQ_API_KEY"] = "GROQ Key"
 
 # Initialize the recognizer
 recognizer = sr.Recognizer()
