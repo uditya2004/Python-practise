@@ -8,13 +8,13 @@
 
 #Method 2 - Without built-in function (Prefered)
 def checksort(list):
+    n=len(list)
     if len(list) <=1:
         return True
       
-    for i in range(1,len(list)):  # start with 1, so in 1st iteration index 1 is compared with index 0. If we start with 0, then index 0 will be compared with -1
-        if list[i]<list[i-1]:
+    for i in range(0,n-1):  #we go till n-2 th index as we are comparing with 1 element forward. If we go till n-1 , then one element forward would go out of range
+        if list[i] > list[i+1]:
             return False
-        prev = i
     
     return True
 
