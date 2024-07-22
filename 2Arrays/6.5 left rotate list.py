@@ -23,20 +23,21 @@
 # LEFT ROTATE D TIMES
 
 #METHOD 1 - Our Logic (More time complexity)
-# def leftrotate(list,d):
-#     a=list[0]
-#     for i in range(d):
-#         a=list[0]
-#         for i in range(1,len(list)):
-#             list[i-1] = list[i]
+def leftrotate(list, count):
     
-#         list[len(list)-1]=a
-#     return list
+    for i in range(count,0,-1):
+        temp= list[0]             #we store the 1st element of list temporarily
+        for i in range(1,len(list)):   #shift 2nd to last element, towards left one step
+            list[i-1]=list[i]
+        
+        list[len(list)-1] = temp    #add the 1st element to the last
+
+    return list
 
 
-# l=[1,2,3,4,5]
-# D=3
-# print(leftrotate(l,D))
+l=[1,2,3,4,5]
+D=3
+print(leftrotate(l,D))
 
 #-------------
 #METHOD 2 - Our Logic - Using reverse() - (O(n) and O(1)auxilary space)
