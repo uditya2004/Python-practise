@@ -35,20 +35,20 @@ print(l)
 # Method 3 - Optimal solution (Using 2 Pointers)
 
 def move(lst):
-    j=None  #pointing on the zero
-    k=None  
+    j=None
+    
+    # Setting the j pointer to the 1st "0" in the lst
     for i in range(0,len(lst)):  # O(N)
         if lst[i]==0:
             j=i
-            k= j+1
             break
     
     #if all elements in a list is non-zero, simply return the list
     if j==None:
         return(lst)
     
-    for p in range(k,len(lst)):   # k is getting incremented through this loop
-        
+    for p in range(j+1,len(lst)):   # p is getting incremented through this loop
+
         if lst[p] !=0:            # just write condition when to increment j
             lst[j],lst[p]=lst[p], lst[j]
             j +=1   
