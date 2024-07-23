@@ -1,12 +1,12 @@
-#Method 1- With built-in function (sort function does more work)
-# def checksort(list):
-#     newlist= sorted(list)
-#     if newlist == list:
-#         return True
-#     else:
-#         return False
+# Method 1- With built-in function (sort function does more work)
+def checksort(list):
+    newlist= sorted(list)
+    if newlist == list:
+        return True
+    else:
+        return False
 
-#Method 2 - Without built-in function (Prefered)
+# Method 2 - Without built-in function (Prefered)
 def checksort(list):
     n=len(list)
     if len(list) <=1:

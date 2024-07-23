@@ -1,27 +1,27 @@
-# def union(lst1,lst2):
-#     return (sorted(list(set(lst1+lst2))))
+def union(lst1,lst2):
+    return (sorted(list(set(lst1+lst2))))
 
 
-# arr1 = [1,2,3,4,5]  
-# arr2 = [2,3,4,4,5,6]
-# print(union(arr1,arr2))
+arr1 = [1,2,3,4,5]  
+arr2 = [2,3,4,4,5,6]
+print(union(arr1,arr2))
 
 #======================================
 #Method 2: Through every element of both lists in a set, only unique elements will be accepted by a set
-# def union(lst1,lst2):
-#     result = set()
-#     for i in lst1:
-#         result.add(i)
+def union(lst1,lst2):
+    result = set()
+    for i in lst1:
+        result.add(i)
 
-#     for i in lst2:
-#         result.add(i)
+    for i in lst2:
+        result.add(i)
     
-#     return list(result)
+    return list(result)
 
 
-# arr1 = [1,2,3,4,5]  
-# arr2 = [2,3,4,4,5,6]
-# print(union(arr1,arr2))
+arr1 = [1,2,3,4,5]  
+arr2 = [2,3,4,4,5,6]
+print(union(arr1,arr2))
 
 #=============================
 #Method 3 - Optimal solution (Using 2 pointers)
