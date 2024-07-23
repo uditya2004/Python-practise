@@ -48,9 +48,10 @@ def move(lst):
         return(lst)
     
     for p in range(k,len(lst)):   # k is getting incremented through this loop
-        if lst[p] !=0:
+        
+        if lst[p] !=0:            # just write condition when to increment j
             lst[j],lst[p]=lst[p], lst[j]
-            j +=1   # just write condition when to increment j
+            j +=1   
 
     return lst
 
