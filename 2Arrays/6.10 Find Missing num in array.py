@@ -61,19 +61,22 @@ Two important properties of XOR are the following:
 XOR of two same numbers is always 0 i.e. a ^ a = 0. ←Property 1.
 XOR of a number with 0 will result in the number itself i.e. 0 ^ a = a.  ←Property 2
 """
-# def miss(lst,n):
+def miss(lst,n):
 
     
-#     XOR1 =0  #Xor of num 1 to n
-#     XOR2=0   #Xor of array elements
-#     for i in range(0,n-1):
-#         XOR1 = XOR1 ^ i+1   # XOR up to [1...^N-1]
-#         XOR2 = XOR2 ^ lst[i]
+    XOR1 =0  #Xor of num 1 to n
+    XOR2=0   #Xor of array elements
+    for i in range(0,n-1):
+        XOR1 = XOR1 ^ i+1        # XOR up to [1...^N-1]
+        XOR2 = XOR2 ^ lst[i]     #The list lst has n-1 elements, so last element index is n-2
     
-#     XOR1 = XOR1 ^ n   # For making XOR up to [1...^ N-1 ^ N]
-#     return XOR1 ^ XOR2
+    XOR1 = XOR1 ^ n   # For making XOR up to [1...^ N-1 ^ N]
+    return XOR1 ^ XOR2
 
 
-# l=[1,3,4]
-# n=4
-# print(miss(l,n))
+l=[1,3,4]
+n=4
+print(miss(l,n))
+
+
+
