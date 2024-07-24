@@ -1,17 +1,16 @@
-def checkdub(lst):
-    i=0
-    for j in range(1,len(lst)):
-        if lst[i] != lst[j]:
-            lst[i+1] = lst[j]
-            i +=1
+def miss(lst,n):    
+    XOR1 = 0   #Xor of all no. 1 to N
+    XOR2 = 0   # XOR of list elements
+
+    for i in range(0,n-1):
+        XOR1 = XOR1 ^ i+1      #1 to N-1
+        XOR2 = XOR2 ^ lst[i]
     
-    return i+1
+    XOR1 = XOR1 ^ n
+    return XOR1 ^ XOR2
 
+     
 
-
-
-l=[0,0,1,1,2,2,3,3,4]
-
-print("Original List: ", l)
-print("Lenght: ", checkdub(l))
-print(l)
+l=[1,3,4]
+n=4
+print(miss(l,n))

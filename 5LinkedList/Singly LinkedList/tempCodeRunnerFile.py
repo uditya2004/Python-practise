@@ -1,0 +1,2 @@
+        # if current == None:
+        #     return

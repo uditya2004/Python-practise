@@ -1,18 +1,9 @@
-def checkdub(lst):
-    i=0
-    length=0
-    for j in range(1,len(lst)):
-        if lst[i] != lst[j]:
-            lst[i+1] = lst[j]
-            i +=1
-            length +=1
+def move(lst):
+    for i in lst:
+        if i==0:
+            lst.remove(i)
+            lst.append(0)
+    return lst
 
-    return length
-
-
-
-l=[0,1,1,1,2,2,3,3,4]
-
-print("Original List: ", l)
-
-print(l)
+l=[1,0,0,2,3,0,6]
+print(move(l))
