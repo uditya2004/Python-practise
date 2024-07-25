@@ -3,14 +3,12 @@ class Node:
         self.data = data
         self.next = None
 
-
     def show(self):
         current = self       #Starting with the object passed i.e head
         while current != None:
             print(current.data, end= "-> ")
             current = current.next
         print("None")
-    
 
     def DeleteFromBeginning(self):          #TC: O(1), SC: O(1)
         if head == None:   
@@ -19,7 +17,10 @@ class Node:
             return head.next
     
     def DeleteFromEnd(self):
-        if head == None:
+        if head == None:   #Empty Linked List
+            return None
+        
+        if head.next == None:  #List with single element
             return None
         
         current = head
