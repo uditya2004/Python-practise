@@ -63,3 +63,9 @@ head.show()
 #Method 2 (More efficient)
 head = head.Reverse2()       #TC = O(N) , SC = O(1)
 head.show()
+
+
+#------------------
+#Method 3 Recursively reverse Linked list
+
+#TO DO
