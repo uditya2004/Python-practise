@@ -40,7 +40,7 @@ class Node:
             prev = curr              # First move prev pointer forward, so we don't lost address of curr node
             curr = front             # Then move curr pointer forward
         
-        return  prev            
+        return  prev                # curr and front will become NONE at the end and the prev will point to the last node , which is our required new head
         
 
 
