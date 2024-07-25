@@ -17,6 +17,50 @@ class Node:
             return None
         else:                   #We just have to move the head. Deallocating memory is taken care by Python
             return head.next
+    
+    def DeleteFromEnd(self):
+        if head == None:
+            return None
+        
+        current = head
+        while current.next.next !=None:
+            current = current.next
+        
+        current.next = None
+        return head
+    
+    def DeleteFromPosition(self, position):
+        current = head
+        for i in range(0,position-2):
+            current = current.next
+        
+        current.next = current.next.next
+        return head
+    
+    def DeleteBeforePosition(self, position):
+        if head == None or position <= 0:
+            return None
+        
+        current = head
+        for i in range(0,position-3):
+            current = current.next
+        
+        current.next = current.next.next
+        return head
+    
+    def DeleteAfterPosition(self, position):
+        if head == None or position <= 0:
+            return None
+        
+        current = head
+        for i in range(0,position-1):
+            current = current.next
+        
+        if current.next != None and current.next.next != None:
+            current.next = current.next.next
+        else:
+            current.next = None
+        return head
 
 
 
@@ -25,11 +69,32 @@ class Node:
 head = Node(10)
 head.next = Node(20)
 head.next.next = Node(30)
+head.next.next.next = Node(40)
 
 print("Original: ",end = " ")
 head.show()
 
 #--------------------------
 #Deletion from the beginning
-head = head.DeleteFromBeginning()
+# head = head.DeleteFromBeginning()
+# head.show()
+
+#--------------------------
+#Deletion from the beginning
+# head = head.DeleteFromEnd()
+# head.show()
+
+#--------------------------
+#Deletion from the Postion
+# head = head.DeleteFromPosition(2)
+# head.show()
+
+#--------------------------
+#Deletion before position
+# head = head.DeleteBeforePosition(3)
+# head.show()
+
+#--------------------------
+#Deletion After position
+head = head.DeleteAfterPosition(4)
 head.show()
