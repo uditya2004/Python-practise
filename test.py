@@ -1,16 +1,55 @@
-def miss(lst,n):    
-    XOR1 = 0   #Xor of all no. 1 to N
-    XOR2 = 0   # XOR of list elements
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
 
-    for i in range(0,n-1):
-        XOR1 = XOR1 ^ i+1      #1 to N-1
-        XOR2 = XOR2 ^ lst[i]
+def show(head):
+    current = head
+    while current != None:
+        print(current.data, end= "-> ")
+        current = current.next
+    print("None")
+
+#Method 1
+def Reverse(head):
+    stack = []
+
+    current = head
+    while current != None:
+        stack.append(current.data)
+        current = current.next
     
-    XOR1 = XOR1 ^ n
-    return XOR1 ^ XOR2
+    current = head
+    while current != None:
+        current.data = stack.pop()
+        current = current.next
+    
+    return head
 
-     
+def Reverse2(head):
+    prev = None
+    curr = head
 
-l=[1,3,4]
-n=4
-print(miss(l,n))
+    while curr != None:
+        front = curr.next
+        curr.next = prev
+
+        prev = curr
+        curr = front
+    
+    return prev
+        
+
+
+
+
+head = Node(10)
+head.next = Node(20)
+head.next.next = Node(30)
+
+show(head)
+
+#==============
+#method 1 Reversing a List
+head = Reverse2(head)
+show(head)
