@@ -19,8 +19,8 @@ def deleteFromBeg(head):
         return None
     
     else:
-        head.next.prev = None
         head = head.next
+        head.prev = None
         return head
 
 #Creating Nodes
