@@ -25,6 +25,7 @@
 #Method 2- Better Method
 
 lst=[13,46,24,50,20,9]
+print("Original Array: ", lst)
 
 for i in range(0,len(lst)-1):
     minInd= i
@@ -35,6 +36,6 @@ for i in range(0,len(lst)-1):
 
     lst[i],lst[j]=lst[j],lst[i]  ##swaping
 
-print(lst)
+print("Sorted array: ", lst)
 
 #Output : [9, 13, 46, 24, 50, 20]

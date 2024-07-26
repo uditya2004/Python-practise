@@ -1,4 +1,5 @@
 array = [67, 44, 82, 17, 20]
+print("Original Array: ", array)
 n = len(array)
 
 for i in range(0, n):   # We choose every element in an array one by one.
@@ -8,4 +9,4 @@ for i in range(0, n):   # We choose every element in an array one by one.
         array[j], array[j-1] = array[j-1], array[j]  #swap
         j = j-1
 
-print(array)
+print("Sorted Array: ", array)

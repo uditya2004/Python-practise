@@ -89,8 +89,8 @@ head.show()
 
 #--------------------------
 #Insert At 3rd position
-head = head.InsertAtPosition(5, 70)
-head.show()
+# head = head.InsertAtPosition(5, 70)
+# head.show()
 
 #--------------------------
 #Insert after 3rd position

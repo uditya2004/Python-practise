@@ -44,6 +44,6 @@ def Search(arr,ele, low, high):
 lst=[3,2,5,6]
 low = 0
 high = len(lst)-1
-key = 1
+key = 5
 
-print(Search(lst,key,low,high))
+print("Index of ", key," is:",Search(lst,key,low,high))
