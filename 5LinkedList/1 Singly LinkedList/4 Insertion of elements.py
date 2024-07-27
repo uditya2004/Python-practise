@@ -79,18 +79,21 @@ head.show()
 
 #--------------------------
 #Insert at the beginning
-# head = head.InsertAtBeginning(40)    #We store the returned value in head
-# head.show()
+print("\nInsert at the beginning")
+head = head.InsertAtBeginning(40)    #We store the returned value in head
+head.show()
 
 #--------------------------
 #Insert at the End
-# head = head.InsertAtEnd(40)
-# head.show()
+print("\nInsert at the End")
+head = head.InsertAtEnd(40)
+head.show()
 
 #--------------------------
 #Insert At 3rd position
-# head = head.InsertAtPosition(5, 70)
-# head.show()
+print("\nInsert At 3rd position")
+head = head.InsertAtPosition(5, 70)
+head.show()
 
 #--------------------------
 #Insert after 3rd position
