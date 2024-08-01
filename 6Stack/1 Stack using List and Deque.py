@@ -53,9 +53,9 @@ print(size)
 - In List, push and pop operation has TC: Amortized - O(1)
 - List
     advantages:-
-        - It's cache friendly, at it's an array implementation and elements are at contiguous memory location
+        - It's cache friendly, as it's an array implementation and elements are at contiguous memory location
     Disadvantage:-
-        - Worst ccase TC is O(N) , as it is amortized O(1) - which means on average it's O(1) but there might be a worst case which can  take more time
+        - Worst ccase TC is O(N) , as it is amortized O(1) - which means on average it's O(1) but there might be a worst case which can take more time
 
 ====================================
 - In Deque, push and pop operation has TC: Worst case - O(1)
