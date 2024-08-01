@@ -52,8 +52,9 @@ This section covers various data structures and algorithms implemented in Python
 
 This section includes other Python programs and scripts that are part of the learning process.
 
-- [Patterns](5. patterns.py)
+- [Patterns](5.%20patterns.py)
 - [Assistant](Assistant.py)
 - [Qwen AI](QwenAI.py)
 - [Test](test.py)
+
 
