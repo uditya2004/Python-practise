@@ -13,7 +13,6 @@ This repository contains Python concepts focusing on Object-Oriented Programming
   - [Stacks](#stacks)
   - [Queues](#queues)
 - [Other Python Programs](#other-python-programs)
-- [Getting Started](#getting-started)
 
 ## Object-Oriented Programming (OOP)
 
@@ -58,9 +57,3 @@ This section includes other Python programs and scripts that are part of the lea
 - [Qwen AI](QwenAI.py)
 - [Test](test.py)
 
-## Getting Started
-
-To get started with this repository, you can clone it using the following command:
-
-```bash
-git clone https://github.com/yourusername/your-repo-name.git
