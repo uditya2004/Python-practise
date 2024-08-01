@@ -5,16 +5,16 @@ class Node:
 
 class Mystack:
     def __init__(self):
-        self.head = None
-        self.size = 0
+        self.head = None    #In stack, head will be our topmost element
+        self.size = 0       # Here self refers to a stack. For eg: self.size means stack's size
         
     def push(self, data):
         new_node = Node(data)
 
-        new_node.next = self.head
-        self.head = new_node
+        new_node.next = self.head   #Poitning new_node.next to Stack's head
+        self.head = new_node        #Shifting Stack's head to the new_node
         
-        self.size +=1
+        self.size +=1               #Increasing the stack's size
 
     def pop(self):
         if self.head == None:
@@ -36,7 +36,7 @@ class Mystack:
         else:
             return self.head.data
 
-    def size(self):
+    def Stack_size(self):
         return self.size
 
 
