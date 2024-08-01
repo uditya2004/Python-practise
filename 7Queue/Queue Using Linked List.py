@@ -10,7 +10,7 @@ class Myqueue:
         self.size = 0
 
 
-    def Enque(self, data):
+    def Enque(self, data):         #TC: O(1)
         new_node = Node(data)
 
         if self.rear == None:           # If the element is added in an empty Queue , it should be made front and rear both
@@ -23,7 +23,7 @@ class Myqueue:
         self.size +=1
     
 
-    def Deque(self):
+    def Deque(self):      #TC: O(1)
         if self.front == None:
             print("Underflow")
             return None
@@ -40,7 +40,7 @@ class Myqueue:
             return prev
 
 
-    def GetFront(self):
+    def GetFront(self):       #TC: O(1)
         if self.front == None:  
             print("Empty Queue")
             return None
@@ -49,7 +49,7 @@ class Myqueue:
             return self.front.data
     
 
-    def GetRear(self):
+    def GetRear(self):         #TC: O(1)
         if self.front == None:
             print("Empty Queue")
             return None
@@ -58,7 +58,7 @@ class Myqueue:
             return self.rear.data
     
 
-    def isEmpty(self):
+    def isEmpty(self):        #TC: O(1)
         return (self.size == 0)
 
 
