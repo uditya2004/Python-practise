@@ -2,6 +2,8 @@
 → In normal list implementation, appending at the end is O(1) Operation, but pop(0) is O(N) operation as we will have to shift all the elements 1 step forward after removing the element from the start.
    To solve this we use Circular List Implementation (making both operations O(1)).
 
+→ In circular List implementation is cache friendly as well as it's based on array implementation
+
 Notes:-
 → In circular List, We cap the size of array (specify the fixed size beforehand).
 → In circular List, we utilize the empty spaces efficiently , no space is wasted in a fixed size array.
@@ -27,7 +29,7 @@ class MyQueue:
 			print("Emtpy Queue")
 			return None
 		else:
-			return self.l[self.front]  # Now Every element is stored in a list, and index of front element is stored in self.front
+			return self.l[self.front]  # Every element is stored in a list, and index of front element is stored in self.front
 	
 
 	def GetRear(self):
@@ -35,7 +37,7 @@ class MyQueue:
 			print("Empty Queue")
 		
 		else:
-			rear = (self.front + self.size - 1) % self.cap   #Finding the rear using formula, as we don't maintain rear now like we do for front.
+			rear = (self.front + self.size - 1) % self.cap   #Finding the rear Index using formula, as we don't maintain rear now like we do for front.
 			return self.l[rear]
 	
 
@@ -68,7 +70,8 @@ class MyQueue:
 	def isEmpty(self):
 		return (self.size == 0)
 
-q = MyQueue(5)
+
+q = MyQueue(5)    #We initialize a queue with storing capacity = 5
 
 q.Enque(10)
 q.Enque(20)
