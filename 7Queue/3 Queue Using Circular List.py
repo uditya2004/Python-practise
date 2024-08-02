@@ -9,11 +9,12 @@ Notes:-
 → In circular List, we utilize the empty spaces efficiently , no space is wasted in a fixed size array.
 
 → In circular List, we use 3 formula's to get the value of front and rear:- 
-        → Incrementing front by 1 = (front + 1) % cap
-        → Incrementing rear by 1 = (rear + 1) % cap
         → rear = (self.front + self.size - 1) % self.cap
 
-   """
+        → Incrementing front by 1 = (front + 1) % cap
+        → Incrementing rear by 1 = (rear + 1) % cap
+
+"""
 
 class MyQueue:
 	def __init__(self, c):
@@ -69,6 +70,19 @@ class MyQueue:
 
 	def isEmpty(self):
 		return (self.size == 0)
+	
+
+	def display(self):
+		if self.size == 0:
+			print("Queue is empty")
+			return
+		
+		else:
+			temp = self.front              #Created a temporary pointer for traversal
+			for i in range(0, self.size):
+				print(self.l[temp], end=' ')
+				temp = (temp + 1) % self.cap
+		
 
 
 q = MyQueue(5)    #We initialize a queue with storing capacity = 5
@@ -76,6 +90,8 @@ q = MyQueue(5)    #We initialize a queue with storing capacity = 5
 q.Enque(10)
 q.Enque(20)
 q.Enque(30)
+
+q.display()
 
 print(q.Deque())
 
