@@ -1,0 +1,1 @@
+self.l[rear] = data
