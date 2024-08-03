@@ -7,7 +7,7 @@ class Node:
         self.left = None
         self.right = None
 
-#TC: O(N)
+#TC: O(N) , We visit every node exactly Once
 #SC: O(H) , H is max no. of entries in function call stack.
 
 def Inorder(root):
