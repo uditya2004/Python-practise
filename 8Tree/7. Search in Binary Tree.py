@@ -10,8 +10,23 @@ class Node:
        / \
      40   50
 """
-
+#TC: O(N), SC: O(H)
+#Method - 1
 def SearchData(root, data):
+    if root == None:
+        return False
+    
+    elif root.data == data:
+        return True 
+    
+    elif SearchData(root.left, data) == True:
+        return True
+    
+    else:
+        return SearchData(root.right, data) 
+
+#Method 2
+def SearchData2(root, data):
     if root == None:
         return False
     
