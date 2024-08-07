@@ -9,52 +9,7 @@ class Node:
         self.data = data
         self.left = None
         self.right = None
-        
-def print_tree(root):
-    if not root:
-        return
-    
-    # Level order traversal using a queue
-    queue = [(root, 0)]
-    levels = {}
-    
-    while queue:
-        node, level = queue.pop(0)
-        if level not in levels:
-            levels[level] = []
-        levels[level].append(node)
-        
-        if node:
-            queue.append((node.left, level + 1))
-            queue.append((node.right, level + 1))
-    
-    max_level = max(levels.keys())
-    for level in range(max_level + 1):
-        if level > 0:
-            # Printing connectors
-            connectors = []
-            for node in levels[level - 1]:
-                if node:
-                    if node.left:
-                        connectors.append("/")
-                    else:
-                        connectors.append(" ")
-                    if node.right:
-                        connectors.append("\\")
-                    else:
-                        connectors.append(" ")
-                else:
-                    connectors.append("  ")
-            print(" " * (max_level - level) + " ".join(connectors))
-        
-        # Printing node values
-        values = []
-        for node in levels[level]:
-            if node:
-                values.append(str(node.data))
-            else:
-                values.append(" ")
-        print(" " * (max_level - level) + " ".join(values))
+
 """
     18
     / \
@@ -100,4 +55,53 @@ root.right.right = Node(100)
 
 print(BinarySearch2(root, 1))
 
+
+#---------------------------------------------------
+#Printing Tree (Not in Syllabus)
+
+def print_tree(root):
+    if not root:
+        return
+    
+    # Level order traversal using a queue
+    queue = [(root, 0)]
+    levels = {}
+    
+    while queue:
+        node, level = queue.pop(0)
+        if level not in levels:
+            levels[level] = []
+        levels[level].append(node)
+        
+        if node:
+            queue.append((node.left, level + 1))
+            queue.append((node.right, level + 1))
+    
+    max_level = max(levels.keys())
+    for level in range(max_level + 1):
+        if level > 0:
+            # Printing connectors
+            connectors = []
+            for node in levels[level - 1]:
+                if node:
+                    if node.left:
+                        connectors.append("/")
+                    else:
+                        connectors.append(" ")
+                    if node.right:
+                        connectors.append("\\")
+                    else:
+                        connectors.append(" ")
+                else:
+                    connectors.append("  ")
+            print(" " * (max_level - level) + " ".join(connectors))
+        
+        # Printing node values
+        values = []
+        for node in levels[level]:
+            if node:
+                values.append(str(node.data))
+            else:
+                values.append(" ")
+        print(" " * (max_level - level) + " ".join(values))
 print_tree(root)
