@@ -12,6 +12,8 @@ class Node:
         self.data = data
         self.left = None
         self.right = None
+
+
 """
     18
     / \
@@ -80,52 +82,30 @@ root.right.right = Node(18)
 root = Insert(root,20)
 
 
-#---------------------------------------------------
-#Printing Tree (Not in Syllabus)
 
-def print_tree(root):
-    if not root:
-        return
-    
-    # Level order traversal using a queue
-    queue = [(root, 0)]
-    levels = {}
-    
-    while queue:
-        node, level = queue.pop(0)
-        if level not in levels:
-            levels[level] = []
-        levels[level].append(node)
-        
+
+
+#---------------------------------------------------
+#Printing Tree(not in syllabus)
+def getHeight(root):
+    return 1 + max(getHeight(root.left), getHeight(root.right)) if root else 0
+
+def printTree(root):
+    def fillMatrix(matrix, node, row, col, width):
         if node:
-            queue.append((node.left, level + 1))
-            queue.append((node.right, level + 1))
-    
-    max_level = max(levels.keys())
-    for level in range(max_level + 1):
-        if level > 0:
-            # Printing connectors
-            connectors = []
-            for node in levels[level - 1]:
-                if node:
-                    if node.left:
-                        connectors.append("/")
-                    else:
-                        connectors.append(" ")
-                    if node.right:
-                        connectors.append("\\")
-                    else:
-                        connectors.append(" ")
-                else:
-                    connectors.append("  ")
-            print(" " * (max_level - level) + " ".join(connectors))
-        
-        # Printing node values
-        values = []
-        for node in levels[level]:
-            if node:
-                values.append(str(node.data))
-            else:
-                values.append(" ")
-        print(" " * (max_level - level) + " ".join(values))
-print_tree(root)
+            mid = width // 2
+            matrix[row][col + mid] = str(node.data)
+            if node.left:
+                matrix[row + 1][col + mid - 1] = '/'
+                fillMatrix(matrix, node.left, row + 2, col, mid)
+            if node.right:
+                matrix[row + 1][col + mid + 1] = '\\'
+                fillMatrix(matrix, node.right, row + 2, col + mid + 1, mid)
+
+    height, width = getHeight(root) * 2, 2 ** getHeight(root) - 1
+    matrix = [[' ' for _ in range(width)] for _ in range(height)]
+    fillMatrix(matrix, root, 0, 0, width)
+    print('\n'.join(''.join(row).rstrip() for row in matrix if any(cell != ' ' for cell in row)))
+
+print("Visual representation of the tree:")
+printTree(root)
