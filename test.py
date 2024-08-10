@@ -6,13 +6,31 @@ class Node:
         self.data = data
         self.left = None
         self.right = None
-
-def Preorder(root):
-    if root != None:
-        Preorder(root.left)
-        print(root.data)
-        Preorder(root.right)
+#TC: O(N)
+#SC: O(H)
+def Search(root, data):
+    if root == None:
+        return False
     
+    if root.data == data:
+        return True
+    elif root.data < data:
+        return Search(root.right,data)
+    else:
+        return Search(root.left,data)
+
+def Search2(root,data):
+    while root != None:
+        if root.data == data :
+            return True
+        
+        elif root.data> data:
+            root = root.left
+        
+        else:
+            root = root.right
+
+    return False
 #Creating a Binary Tree
 root = Node(10)
 root.left = Node(20)
@@ -29,4 +47,4 @@ root.right.right = Node(50)
 """
 
 #============
-Preorder(root)
+print(Search2(root,0))

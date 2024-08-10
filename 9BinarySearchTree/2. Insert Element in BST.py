@@ -43,30 +43,32 @@ def Insert(root,key):
 #TC: O(H) , it's same as search
 #SC: O(1)
 def Insert2(root,key):
-    parent = None
+    parent = None    # For keeping track of "curr" 's root
     curr = root
-    while curr != None:
+
+    while curr != None:         # This loop will take us to the node below which element is to be inserted and that node will be stored in "parent"
         parent = curr
 
-        if curr.data == key:
+        if curr.data == key:    # If key already present in the tree, do not make any changes, we return the same root.
             return root
         
-        elif curr.data < key:
+        elif curr.data < key:   # If key is greater than current node's data, move to the left subtree
             curr = curr.left
         
-        else:
+        else:                   # If key is smaller than current node's data, move to the right subtree
             curr = curr.right
     
-    if parent == None:   # For Empty Tree
+    if parent == None:          # For Empty Tree, create a new node and return it as the root
         return Node(key)
     
-    if parent.data > key:
-        parent.left = Node(key)
+    # Inserting the new node to the left or right of the node
+    if parent.data > key:     
+        parent.left = Node(key)     
     
     else:
         parent.right = Node(key)
         
-    return root
+    return root                 # Finally returning the root of the Tree with the new node.
 
 
 root = Node(10)
