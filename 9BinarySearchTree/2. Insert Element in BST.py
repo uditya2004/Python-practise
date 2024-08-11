@@ -54,11 +54,12 @@ def Insert2(root,key):
         if curr.data == key:    # If key already present in the tree, do not make any changes, we return the same root.
             return root
         
-        elif curr.data < key:   # If key is greater than current node's data, move to the left subtree
+        elif curr.data > key:   # If key is smaller than current node's data, move to the left subtree
             curr = curr.left
         
-        else:                   # If key is smaller than current node's data, move to the right subtree
+        else:                   # If key is greater than current node's data, move to the right subtree
             curr = curr.right
+    
     
     if parent == None:          # For Empty Tree, create a new node and return it as the root
         return Node(key)
