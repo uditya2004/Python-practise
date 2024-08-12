@@ -48,15 +48,17 @@ node2.prev = head
 node2.next = node3
 
 node3.prev = node2
-
+print("Original list:- ")
 show(head)
 
 #------------------
 #Delete From Beginning of List
+print("\nDelete From Beginning")
 head = deleteFromBeg(head)
 show(head)
 
 #=============
 #Delete from end
+print("\nDelete From End")
 head = DeleteFromEnd(head)
 show(head)
