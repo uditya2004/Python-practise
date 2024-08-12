@@ -53,15 +53,16 @@ class Node:
         if head == None or position <= 0:
             return None
         
-        current = head
-        for i in range(0,position-1):
-            current = current.next
-        
-        if current.next != None and current.next.next != None:
-            current.next = current.next.next
         else:
-            current.next = None
-        return head
+            current = head
+            for i in range(0,position-1):
+                current = current.next
+            
+            if current.next != None and current.next.next != None:
+                current.next = current.next.next
+            else:
+                current.next = None
+            return head
 
 
 
@@ -71,31 +72,39 @@ head = Node(10)
 head.next = Node(20)
 head.next.next = Node(30)
 head.next.next.next = Node(40)
+head.next.next.next.next = Node(50)
+head.next.next.next.next.next = Node(60)
+
 
 print("Original: ",end = " ")
 head.show()
 
 #--------------------------
 #Deletion from the beginning
-# head = head.DeleteFromBeginning()
-# head.show()
+print("\nDelete from the beginning")
+head = head.DeleteFromBeginning()
+head.show()
 
 #--------------------------
-#Deletion from the beginning
-# head = head.DeleteFromEnd()
-# head.show()
+#Deletion from the End
+print("\nDelete from the End")
+head = head.DeleteFromEnd()
+head.show()
 
 #--------------------------
 #Deletion from the Postion
-# head = head.DeleteFromPosition(2)
-# head.show()
+print("\nDelete from the Postion")
+head = head.DeleteFromPosition(2)
+head.show()
 
 #--------------------------
 #Deletion before position
-# head = head.DeleteBeforePosition(3)
-# head.show()
+print("\nDelete before positon")
+head = head.DeleteBeforePosition(3)
+head.show()
 
 #--------------------------
 #Deletion After position
-head = head.DeleteAfterPosition(4)
+print("\nDelete after position")
+head = head.DeleteAfterPosition(2)
 head.show()
