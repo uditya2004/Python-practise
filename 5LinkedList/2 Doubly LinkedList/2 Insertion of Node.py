@@ -37,7 +37,7 @@ def InsertAtEnd(head,data):
 head = None   #Assuming empty linked list
 
 #-----------------------
-print("\n Insert at the beginning")
+print("\nInsert at the beginning")
 head = InsertAtBeg(head, 10)
 head = InsertAtBeg(head, 20)
 show(head)
