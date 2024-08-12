@@ -1,17 +1,16 @@
-def Search(arr,el):
-    for i in range(0,len(arr)):
-        if arr[i]==el:
+def Search(lst, key):
+    for i in range(0,len(lst)):
+        if lst[i] == key:
             return i
         
     return -1
+    
+lst = [1,2,3,4]
+key = 4
+result  = Search(lst, key)
+print 
 
-lst=[1,2,3,4]
-key=5
-Result = Search(lst,key)
-print(Result)
-
-# if Result == -1:
-#     print("Element not found")
-
-# else:
-#     print("Element Found at index: ", Result)
+if result != -1:
+    print("Element found at index: ", result)
+else:
+    print("Not Found")
