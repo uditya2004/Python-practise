@@ -20,9 +20,30 @@ def InsertAtBeg(head,data):
 
     new_node.next = head
     return new_node
-    
+
+def InsertAtEnd(head,data):
+    new_node = Node(data)
+    if head == None:
+        return new_node
+    else:
+        current = head
+        while current.next != None:
+            current = current.next
+        
+        new_node.prev = current
+        current.next = new_node
+        return head
     
 head = None   #Assuming empty linked list
+
+#-----------------------
+print("\n Insert at the beginning")
 head = InsertAtBeg(head, 10)
-# head = InsertAtBeg(head, 20)
+head = InsertAtBeg(head, 20)
+show(head)
+
+#------------------------------
+print("\nInsert a the end")
+head = InsertAtEnd(head, 60)
+head = InsertAtEnd(head, 90)
 show(head)
