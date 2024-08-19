@@ -23,19 +23,23 @@
 #============================================
 
 #Method 2- Better Method
+#Selection sort
+def Sorted(arr):
+    n = len(arr)
+    for i in range(0,n-1):
+        minInd = i
 
-lst=[13,46,24,50,20,9]
-print("Original Array: ", lst)
+        for j in range(i+1, n):
+            if arr[minInd] > arr[j]:
+                minInd = j
 
-for i in range(0,len(lst)-1):
-    minInd= i
+        arr[i], arr[minInd] = arr[minInd], arr[i]   #Swapping
+    
+    return arr
 
-    for j in range(i+1, len(lst)):
-        if lst[j] < lst[minInd]:
-            minInd = j       
 
-    lst[i],lst[j]=lst[j],lst[i]  ##swaping
-
-print("Sorted array: ", lst)
+arr = [13,46,24,50,20,9]
+print("Original Array: ", arr)
+print("Sorted array: ", Sorted(arr))
 
 #Output : [9, 13, 46, 24, 50, 20]
