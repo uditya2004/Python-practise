@@ -12,6 +12,8 @@ This repository contains Python concepts focusing on Object-Oriented Programming
   - [Linked Lists](#linked-lists)
   - [Stacks](#stacks)
   - [Queues](#queues)
+  - [Tree](#tree)
+  - [Binary Search Tree](#binary-search-tree)
 - [Other Python Programs](#other-python-programs)
 
 ## Object-Oriented Programming (OOP)
