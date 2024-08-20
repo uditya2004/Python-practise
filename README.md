@@ -50,6 +50,14 @@ This section covers various data structures and algorithms implemented in Python
 
 - [Queues](7Queue/)
 
+### Tree
+
+- [Tree](8Tree/)
+
+### Binary Search Tree
+
+- [Binary Search Tree](9BinarySearchTree/)
+
 ## Other Python Programs
 
 This section includes other Python programs and scripts that are part of the learning process.
