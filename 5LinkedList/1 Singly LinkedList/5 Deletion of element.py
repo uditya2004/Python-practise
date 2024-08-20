@@ -31,12 +31,16 @@ def DeleteFromEnd(head):
     return head
     
 def DeleteFromPosition(head, position):
-    current = head
-    for i in range(0,position-2):
-        current = current.next
+    if head == None or position <=0:
+        return None
     
-    current.next = current.next.next
-    return head
+    else: 
+        current = head
+        for i in range(0,position-2):
+            current = current.next
+        
+        current.next = current.next.next
+        return head
     
 def DeleteBeforePosition(head, position):
     if head == None or position <= 0:
@@ -71,10 +75,10 @@ def DeleteAfterPosition(head, position):
 #Creating Linked List
 head = Node(10)
 head.next = Node(20)
-head.next.next = Node(30)
-head.next.next.next = Node(40)
-head.next.next.next.next = Node(50)
-head.next.next.next.next.next = Node(60)
+# head.next.next = Node(30)
+# head.next.next.next = Node(40)
+# head.next.next.next.next = Node(50)
+# head.next.next.next.next.next = Node(60)
 
 
 print("Original: ",end = " ")
@@ -82,20 +86,20 @@ show(head)
 
 #--------------------------
 #Deletion from the beginning
-print("\nDelete from the beginning")
-head = DeleteFromBeginning(head)
-show(head)
+# print("\nDelete from the beginning")
+# head = DeleteFromBeginning(head)
+# show(head)
 
 #--------------------------
 #Deletion from the End
-print("\nDelete from the End")
-head = DeleteFromEnd(head)
-show(head)
+# print("\nDelete from the End")
+# head = DeleteFromEnd(head)
+# show(head)
 
 #--------------------------
 #Deletion from the Postion
 print("\nDelete from the Postion")
-head = DeleteFromPosition(head, 2)
+head = DeleteFromPosition(head, 4)
 show(head)
 
 #--------------------------

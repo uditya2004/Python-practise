@@ -10,31 +10,31 @@ def show(head):
         curr = curr.next
     print("None")
 
-def InsertAtBeg(head, data):
-    new_node = Node(data)
-    new_node.next = head
-    return new_node
-
-def InsertAtEnd(head , data):
-    new_node = Node(data)
-
-    if head  == None:
-        return new_node
-    
-    else:
-        curr = head
-        while curr.next != None:
-            curr = curr.next
-        
-        curr.next = new_node
-
+def DeleteFromBeg(head):
+    if head == None:
         return head
+    else:
+        return head.next
 
-def InsertAtposition(head , data, position):
+def DeleteFromEnd(head):
+    if head == None:
+        return None
+    if head.next == None:
+        return None
+
+    curr = head
+    while curr.next.next != None:
+        curr = curr.next
+    curr.next = None
+    return head
+
+def DeleteAtPosition(head, position):
+    if head == None:
+        return None
+    
     if position <=0:
         return None
     
-    new_node = Node(data)
     curr = head
     for i in range(0,position-2):
         curr = curr.next
@@ -42,16 +42,15 @@ def InsertAtposition(head , data, position):
         if curr == None:
             return head
     
-    new_node.next = curr.next
-    curr.next = new_node
-
+    curr.next = curr.next.next
     return head
 
 #DRIVER CODE
 head = Node(10)
-# head.next = Node(20)
+head.next = Node(20)
+head.next.next = Node(30)
 show(head)
 
-head = InsertAtposition(head , 20, 3)
+head = DeleteAtPosition(head, 9)
 show(head)
 

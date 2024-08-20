@@ -1,2 +1,2 @@
-        # if current == None:
-        #     return
+            # if current == None:
+            #     return head
