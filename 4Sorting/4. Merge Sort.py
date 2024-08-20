@@ -1,6 +1,6 @@
 def merge(arr,low,mid,high):
-    temp=[]
-    left=low
+    temp=[]                      #temporary array "temp" to store the sorted elements while merging two halves of the array. After the merging is done, the elements in temp need to be copied back into the original array "arr".
+    left=low 
     right= mid + 1
 
     while left<=mid and right<=high:   # while we have elements remaining on both left and right half
@@ -12,18 +12,18 @@ def merge(arr,low,mid,high):
             temp.append(arr[right])
             right +=1
     
-    while left<=mid:        #if right half is exhausted and left one, elements remains . Then we straightaway add all the elements of the left half
+    while left<=mid:        # if right half is exhausted and left one, elements remains . Then we straightaway add all the elements of the left half
         temp.append(arr[left])
         left +=1
     
-    while right<=high:      #if left half is exhausted and right one, elements remains
+    while right<=high:      # if left half is exhausted and right one, elements remains
         temp.append(arr[right])
         right +=1
     
 
     #placing all the elements from temp array to arr
     for i in range(low,high+1):
-        arr[i] = temp[i-low]
+        arr[i] = temp[i-low]              # The index "i" in the loop refers to the actual position in "arr", and "i-low" calculates the corresponding position in "temp".
 
     return arr
 
@@ -44,4 +44,4 @@ lst=[3,2,4,1,3]
 print(mergeSort(lst,0,len(lst)-1))
 
 
-#--------------------------------------
+
