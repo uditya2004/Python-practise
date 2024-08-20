@@ -22,13 +22,14 @@ def InsertAtEnd(head,data):      #TC: O(n) , SC: O(1) (If we maintain a "Tail" (
     if head == None:      #If the LinkedList is empty   (Here "self" and "head" are same, but we write "head" to improve readability.)
         return Node(data)
     
-    current = head
-    while current.next != None:  
-        current = current.next
-    
-    new_node = Node(data)
-    current.next = new_node
-    return head                #Indicating no change in head, and preventing from making function void
+    else:
+        current = head
+        while current.next != None:  
+            current = current.next
+        
+        new_node = Node(data)
+        current.next = new_node
+        return head                #Indicating no change in head, and preventing from making function void
     
 
 def InsertAtPosition(head,position, data):
