@@ -10,3 +10,6 @@ result = client.predict(
 # Extract the response from the result
 response = result[1][0][1]
 print(response)
+
+
+
