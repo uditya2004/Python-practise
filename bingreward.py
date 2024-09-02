@@ -72,7 +72,7 @@ for word in random_words[1:]:  # Skip the first element
     search_bar.send_keys(Keys.RETURN)
     
     # Step 4: Wait for 7 seconds before moving to the next word
-    time.sleep(6)
+    time.sleep(5)
 
 # Close the browser after the loop is done
 driver.quit()
