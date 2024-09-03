@@ -4,7 +4,6 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from groq import Groq
 import subprocess
-from selenium.webdriver.edge.service import Service
 
 # Set the API key as an environment variable
 os.environ["GROQ_API_KEY"] = "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"
