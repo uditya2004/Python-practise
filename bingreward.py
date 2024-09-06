@@ -73,5 +73,7 @@ for word in random_words[1:]:  # Skip the first element
     # Step 4: Wait for 7 seconds before moving to the next word
     time.sleep(5)
 
+input("Press Enter to exit...")
+
 # Close the browser after the loop is done
 driver.quit()
