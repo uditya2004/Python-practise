@@ -1,6 +1,6 @@
 #Ques 1:- Sum of N natural number
 
-#Method 1:-  PARAMETERIZED WAY 
+#Method 1:-  Recursion:- PARAMETERIZED WAY 
 # TC:- O(N) (For one number it takes O(1) and it does for all N numbers . SO O(N)
 # SC:- O(N) (Stack Space
 
@@ -17,7 +17,7 @@ summation(n, 0)
 
 
 #-------------------------------------------
-#Method 2:-   FUNCTIONAL WAY -> Used when we want function to return value and not just print it
+#Method 2:- Recursion:- FUNCTIONAL WAY -> Used when we want function to return value and not just print it
 def summation_using_recursion(n):
     if n == 0:
         return 0
@@ -34,7 +34,7 @@ print(summation_using_recursion(n))
 #=======================================================
 #Question:- Factorial of N
 
-#Method 1:- Parameterized way
+#Method 1:- Recursion:- Parameterized way
 # TC:- O(N) (For one number it takes O(1) and it does for all N numbers . SO O(N)
 # SC:- O(N) (Stack Space)      
 
@@ -51,7 +51,7 @@ n = int(input("Enter a number:- "))  #4
 factorial(n,1)
 
 #---------------------------------------------
-#Method 2:- Functional Way
+#Method 2:- Recursion:- Functional Way
 
 def factorial(n):
     if n== 0:

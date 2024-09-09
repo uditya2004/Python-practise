@@ -1,4 +1,4 @@
-# Method 1:- parameterize way            
+# Method 1:- Recursion:- parameterize way            
 # TC: O(N) 
 # SC: O(N)  -> O(N) {result varaible} + O(N) {Function call stack}
 # def reverse(n, arr, result):
@@ -18,7 +18,7 @@
 
 #=========================================
 
-# Method 2:- Functional way - Using 2 Pointer through 2 variable
+# Method 2:- Recursion:- Functional way - Using 2 Pointer through 2 variable
 # TC : O(N/2) = O(N)
 # SC: O(N/2) = O(N)  {Function call stack}
 
@@ -37,7 +37,7 @@
 
 #=========================================
 
-# Method 3:- Functional way - Using 2 Pointer through 1 variable  (take right pointer = n-left-1)
+# Method 3:- Recursion:- Functional way - Using 2 Pointer through 1 variable  (take right pointer = n-left-1)
 # TC : O(N/2) = O(N)
 # SC: O(N/2) = O(N)  {Function call stack}
 
