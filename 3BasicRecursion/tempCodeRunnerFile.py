@@ -1,12 +1,12 @@
-def reverse(arr, p1, p2):
-    if p1>=p2:
+def reverse(n, arr, left):
+    if left >= n- left - 1:
         return arr
     
     else:
-        arr[p1], arr[p2] = arr[p2], arr[p1]
-        return reverse(arr, p1+1, p2-1)
+        arr[left], arr[n-left-1] = arr[n-left-1], arr[left]
+        return reverse(arr, left+1, n-left-1-1)
 
 
 array = [10,20,30,40]
 
-print(reverse(array, 0, len(array)-1))
+print(reverse(len(array), array, 0))
