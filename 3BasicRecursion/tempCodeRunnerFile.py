@@ -1,12 +1,18 @@
-def check_pal(n, str, low):
-    if low>=n//2:
-        return True
+# Ques:- Given an integer N. Print the Fibonacci series up to the Nth term.
+def series(n, a, b, c):
+    if n == 0:
+        return
     else:
-        if str[low] != str[n-low-1]:
-            return False
-        
-        return check_pal(n, str, low + 1)
+        print(c, end = " ")
+        a = b
+        b = c 
+        c = a+b
+        series(n-1, a, b, c)
 
-
-str1 = "ABCDCBA"
-print(check_pal(len(str1), str1, 0))
+n = int(input("Enter number: "))
+a = 0
+b = 1
+c = a+b
+print(a, end=" ")
+print(b, end=" ")
+series(n-2, a, b, c)
