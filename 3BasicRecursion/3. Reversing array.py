@@ -2,7 +2,7 @@
 # TC: O(N) 
 # SC: O(N)  -> O(N) {result varaible} + O(N) {Function call stack}
 # def reverse(n, arr, result):
-#     if n<0:
+#     if n<0:                     #BASE CASE
 #         print(result)
 #         return
     
@@ -21,8 +21,9 @@
 # Method 2:- Functional way - Using 2 Pointer through 2 variable
 # TC : O(N/2) = O(N)
 # SC: O(N/2) = O(N)  {Function call stack}
+
 # def reverse(arr, left, n-left-1):
-#     if left>=n-left-1:
+#     if left>=n-left-1:            #BASE CASE
 #         return arr
     
 #     else:
@@ -41,7 +42,7 @@
 # SC: O(N/2) = O(N)  {Function call stack}
 
 def reverse(n, arr, left):
-    if left >= n//2 :
+    if left >= n//2 :            #BASE CASE
         return arr
     
     else:

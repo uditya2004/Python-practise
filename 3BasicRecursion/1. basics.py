@@ -9,7 +9,7 @@ Step 5 :- Check By doing a Dry Run of Test Cases
 """
 #Printing 1 to 3 using recursive function
 # def show(count):
-#     if count == 4:
+#     if count == 4:    #BASE CASE
 #         return
 #     else:
 #         print(count)
@@ -25,7 +25,7 @@ Step 5 :- Check By doing a Dry Run of Test Cases
 #Printing "uditya" n times
 
 # def show(n):
-#     if n == 0:
+#     if n == 0:         #BASE CASE
 #         return
     
 #     else:
