@@ -4,8 +4,7 @@ def reverse(arr, p1, p2):
     
     else:
         arr[p1], arr[p2] = arr[p2], arr[p1]
-        arr = reverse(arr, p1+1, p2-1)
-        return arr
+        return reverse(arr, p1+1, p2-1)
 
 
 array = [10,20,30,40]
