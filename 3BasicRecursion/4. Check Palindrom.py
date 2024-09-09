@@ -38,8 +38,8 @@
 # print(check_pal(str1, 0, len(str1) - 1))
 
 #===========================================
-# Method 3: Functional Recursion
-
+# Method 3: Functional Recursion - Using 2 Pointer variable
+ 
 def check_pal(str, low , high):
     if low>=high:
         return True
@@ -52,3 +52,19 @@ def check_pal(str, low , high):
 
 str1 = "ABCDCBA"
 print(check_pal(str1, 0, len(str1) - 1))
+
+#------------------------------------------
+# Method 3: Functional Recursion - Using 1 Pointer variable
+
+def check_pal(n, str, low):
+    if low>=n//2:
+        return True
+    else:
+        if str[low] != str[n-low-1]:
+            return False
+        
+        return check_pal(n, str, low + 1)
+
+
+str1 = "ABCDCBA"
+print(check_pal(len(str1), str1, 0))

@@ -1,12 +1,12 @@
-def reverse(n, arr, left):
-    if left >= n- left - 1:
-        return arr
-    
+def check_pal(n, str, low):
+    if low>=n//2:
+        return True
     else:
-        arr[left], arr[n-left-1] = arr[n-left-1], arr[left]
-        return reverse(arr, left+1, n-left-1-1)
+        if str[low] != str[n-low-1]:
+            return False
+        
+        return check_pal(n, str, low + 1)
 
 
-array = [10,20,30,40]
-
-print(reverse(len(array), array, 0))
+str1 = "ABCDCBA"
+print(check_pal(len(str1), str1, 0))
