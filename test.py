@@ -1,13 +1,9 @@
-def fib(n):
-    if n<=1:
-        return n
-    else:
-        last = fib(n-1)
-        sec_last = fib(n-2)
-        return  last + sec_last 
+arr = [1, 3, 2, 5, 3]
+arr_max = max(arr)
 
+hash_table = [0]* (arr_max+1)
 
-n = int(input("Enter the number: "))
-print(fib(n))
+for i in arr:
+    hash_table[i] +=1
 
-# 0 1 1 2 3 5
+print(hash_table)
