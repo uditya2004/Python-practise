@@ -1,7 +1,7 @@
 class MyHash:
     def __init__(self, n):
         self.bucket_size = n
-        self.hash_table = [[] for _ in range(self.bucket_size)]
+        self.hash_table = [[] for _ in range(self.bucket_size)]          #Output: [[], [], [], [], [], [], []]
     
     def insert(self, value):
         hash_value = value %  self.bucket_size
@@ -9,14 +9,14 @@ class MyHash:
     
     def search(self, key):
         hash_value = key %  self.bucket_size
-        if key in self.hash_table[hash_value]:
-            return True
-        else:
-            False
+        return key in self.hash_table[hash_value]
 
     def remove(self, key):
         hash_value = key %  self.bucket_size
-        self.hash_table[hash_value].remove(key)
+        if key in self.hash_table[hash_value]:
+            self.hash_table[hash_value].remove(key)
+        else:
+            print(f"Key {key} is not present")
 
 
 """
@@ -34,9 +34,11 @@ h.insert(56)
 h.insert(72)
 print(h.hash_table)
 
-print(h.search(56))       #Output:- True
+print("Searching 56:- ", h.search(56))       #Output:- True
 
 h.remove(56)
 print(h.hash_table)
 
-print(h.search(56))       #Output:- False
+print("Searching 56:- ", h.search(56))       #Output:- False
+
+h.remove(57)

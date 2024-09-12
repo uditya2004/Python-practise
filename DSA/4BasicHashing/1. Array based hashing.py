@@ -1,6 +1,5 @@
 """
 CONCEPT
-Note:
 - We create an array of size = max element present in that array.
 - eg: frequency of element "2" will be stored at index 2. This allows constant time access to data because you don't need to search for the element; you know exactly where it is stored.
 
