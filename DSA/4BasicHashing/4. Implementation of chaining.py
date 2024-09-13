@@ -6,6 +6,9 @@ Methods to handle collision:-
         ii. Quadratic Probing
         iii. Double Hashing
 """
+
+# CHAINING
+
 class MyHash:
     def __init__(self, n):
         self.bucket_size = n
