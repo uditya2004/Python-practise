@@ -17,7 +17,7 @@ Ways to do open addressing:-
 #========================================================
 #========================================================
 
-#LINEAR PROBING 
+#1. LINEAR PROBING 
 
 """
 Searching Algo:
@@ -49,8 +49,10 @@ PROBLEM OF CLUSTER FORMATION:-
 
 #========================================================
 #========================================================
+
+# 2. QUADRATIC PROBING
+
 """
-Quadratic Probing
 Disadvantage with Quadratic Probing:-
 - It might happen it is not able to find empty slot even if there are empty slot present.
 
