@@ -1,8 +1,25 @@
 
-char_hash_table = [0] * 26
-str1 = "abcdabefc"
-for i in str1:
-    hash_value = ord(i)-ord('a')
-    char_hash_table[hash_value] +=1
+def build_hash(s):
+    dict1 = {}
 
-print(char_hash_table)
+    for character in s:
+        if character in dict1:
+            dict1[character] +=1
+        else:
+            dict1[character] =1
+    
+    return dict1
+
+def fetching(hash_table, query):
+    return hash_table.get(query, 0)
+
+
+# Sample string and queries
+s = "abcdabefc"
+char_queries = ['a', 'g', 'h', 'b', 'c']
+
+hash_table = build_hash(s)
+print(hash_table)
+
+for query in char_queries:
+    print(f"{query} occurs {fetching(hash_table, query)} times")

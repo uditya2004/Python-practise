@@ -1,3 +1,11 @@
+"""
+Methods to handle collision:-
+1. Chaining -> We create extra space here (e.g., linked lists) 
+2. Open addressing -> We don't create extra space here , rather we find the next free slot in the array
+        i. Linear Probing
+        ii. Quadratic Probing
+        iii. Double Hashing
+"""
 class MyHash:
     def __init__(self, n):
         self.bucket_size = n

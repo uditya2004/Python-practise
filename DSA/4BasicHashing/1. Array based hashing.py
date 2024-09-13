@@ -42,24 +42,25 @@ Concept:-
 
 """
 
-def build_hash_table(str1, char_hash_table):
+def build_hash_table(str1, hash_table):
     for i in str1:
         hash_value = ord(i)-ord('a')         #The ord() function returns the ASCII value of a character. 
-        char_hash_table[hash_value] +=1
+        hash_table[hash_value] +=1
     
-    return char_hash_table
+    return hash_table
 
-def fetching(char_hash_table, key):
+def fetching(hash_table, key):
     hash_value = ord(key)-ord('a')
-    return char_hash_table[hash_value]
+    return hash_table[hash_value]
+
 
 # Sample string and queries
-char_hash_table = [0] * 26        
+hash_table = [0] * 26        
 str1 = "abcdabefc"
 char_queries = ['a', 'g', 'h', 'b', 'c']
 
-char_hash_table = build_hash_table(str1, char_hash_table)
+hash_table = build_hash_table(str1, hash_table)
 
 for query in char_queries:
-    print(f"{query} occurs {fetching(char_hash_table, query)} times")
+    print(f"{query} occurs {fetching(hash_table, query)} times")
 

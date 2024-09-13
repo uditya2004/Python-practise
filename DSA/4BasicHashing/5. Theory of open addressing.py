@@ -1,3 +1,5 @@
+# OPEN ADDRESSING
+
 """
 CONCEPT:
 - We use single array only (no chaing formation)
