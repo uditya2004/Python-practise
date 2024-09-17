@@ -1,25 +1,27 @@
-import os
-from gradio_client import Client
 
-client = Client("stabilityai/stable-diffusion-3-medium")
-result = client.predict(
-    prompt="taj mahal",
-    negative_prompt="blurry, low quality, cartoonish, abstract",
-    seed=0,
-    randomize_seed=True,
-    width=1024,
-    height=1024,
-    guidance_scale=5,
-    num_inference_steps=28,
-    api_name="/infer"
-)
+def longSubArray(array, N, k):
+    maxLength = 0
+    sum = 0
+    for i in range(0, N):
 
-# The result will contain the path to the image.
-image_path = result[0]
-print(f"Image saved at: {image_path}")
+        for j in range(i, N):
+            if sum <k:
+                sum += array[j]
+            
+            if sum == k:
+                maxLength = max(maxLength, j-i + 1 )
 
-# Automatically open the image using the default image viewer
-if os.path.exists(image_path):
-    os.startfile(image_path)  # For Windows
-else:
-    print(f"Image path not found: {image_path}")
+            if sum>= k:
+                sum = 0
+                break
+
+                
+    
+    return maxLength
+
+
+N = 3
+k = 5     #Sum
+array = [2,3,5]
+
+print("FInal Answer:- ", longSubArray(array, N, k))

@@ -1,9 +1,26 @@
-def move(lst):
-    for i in lst:
-        if i==0:
-            lst.remove(i)
-            lst.append(0)
-    return lst
+def longSubArray(array, N, k):
+    maxLength = 0
+    sum = 0
+    for i in range(0, N):
 
-l=[1,0,0,2,3,0,6]
-print(move(l))
+        for j in range(i, N):
+            if sum <k:
+                sum += array[j]
+            
+            else:
+                sum = 0
+                break 
+            
+            if sum == k:
+                maxLength = max(maxLength, j-i + 1 )
+
+                
+    
+    return maxLength
+
+ 
+array = [2,3,5]
+N = 3     #Length of array
+k = 5     #Sum
+
+print("Final Answer:- ", longSubArray(array, N, k))
