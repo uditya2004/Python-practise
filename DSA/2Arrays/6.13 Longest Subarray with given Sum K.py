@@ -67,6 +67,8 @@ print("Final Answer:- ", longSubArray(array, N, k))
 #=====================================
 
 #Method - Two Pointer  (Optimal Solution)
+#TC:- O(N)   -> both the right pointer and the left pointer will each traverse the array at most once, so the combined complexity is O(N).
+#SC:- O(1)
 def getLongestSubarray(a, k):
     n = len(a) # size of the array.
 
@@ -74,20 +76,20 @@ def getLongestSubarray(a, k):
     Sum = a[0]
     maxLen = 0
     while right < n:
-        # if sum > k, reduce the subarray from left
-        # until sum becomes less or equal to k:
-        while left <= right and Sum > k:
-            Sum -= a[left]
+        
+        while left <= right and Sum > k:      # Check if sum > k, if it is -> Then reduce the subarray from left, until sum becomes less or equal to k:
+            Sum = Sum - a[left]
             left += 1
 
-        # if sum = k, update the maxLen i.e. answer:
-        if Sum == k:
+        
+        if Sum == k:                    # if sum = k, update the maxLen i.e. answer:
             maxLen = max(maxLen, right - left + 1)
 
-        # Move forward the right pointer:
-        right += 1
+        #Before moving right (shown below), we have to do above mentioned checks first.
+
+        right += 1     # Move forward the right pointer:
         if right < n: 
-            Sum += a[right]
+            Sum = Sum + a[right]
 
     return maxLen
 
