@@ -1,41 +1,7 @@
 """
 Note: Subarray means , contiguous part of an array , (array mein se kahi se bhi pick krke subarray nhi bna skte, all collected elements should be next to each other.)
 """
-#Method
-# def getLongestSubarray(a, k):
-#     n = len(a) # size of the array.
 
-#     left, right = 0, 0 # 2 pointers
-#     Sum = a[0]
-#     maxLen = 0
-#     while right < n:
-#         # if sum > k, reduce the subarray from left
-#         # until sum becomes less or equal to k:
-#         while left <= right and Sum > k:
-#             Sum -= a[left]
-#             left += 1
-
-#         # if sum = k, update the maxLen i.e. answer:
-#         if Sum == k:
-#             maxLen = max(maxLen, right - left + 1)
-
-#         # Move forward the right pointer:
-#         right += 1
-#         if right < n: 
-#             Sum += a[right]
-
-#     return maxLen
-
-
-# if __name__ == "__main__":
-# 	a = [2, 3, 5, 1, 9]
-# 	k = 10
-
-# 	length = getLongestSubarray(a, k)
-# 	print(f"The length of the longest subarray is: {length}")
-
-
-#===================
 #Method:- Two Pointer   -> Brute Force
 #TC: O(N^2)
 #SC: O(1)
@@ -88,8 +54,6 @@ def longSubArray(array, N, k):
         
         if sum not in dict1:             # If the sum is not in the dictionary, we can add it to the dictionary with the index i.
             dict1[sum] = i
-
-
     
     return maxLen
  
@@ -98,6 +62,42 @@ N = 7     #Length of array
 k = 3     #Sum
 
 print("Final Answer:- ", longSubArray(array, N, k))
+
+
+#=====================================
+
+#Method - Two Pointer  (Optimal Solution)
+def getLongestSubarray(a, k):
+    n = len(a) # size of the array.
+
+    left, right = 0, 0 # 2 pointers
+    Sum = a[0]
+    maxLen = 0
+    while right < n:
+        # if sum > k, reduce the subarray from left
+        # until sum becomes less or equal to k:
+        while left <= right and Sum > k:
+            Sum -= a[left]
+            left += 1
+
+        # if sum = k, update the maxLen i.e. answer:
+        if Sum == k:
+            maxLen = max(maxLen, right - left + 1)
+
+        # Move forward the right pointer:
+        right += 1
+        if right < n: 
+            Sum += a[right]
+
+    return maxLen
+
+
+if __name__ == "__main__":
+	a = [2, 3, 5, 1, 9]
+	k = 10
+
+	length = getLongestSubarray(a, k)
+	print(f"The length of the longest subarray is: {length}")
 
 
 
