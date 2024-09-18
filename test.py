@@ -1,29 +1,15 @@
-def lenOfLongSubarr (arr, n, k) : 
+def read(n, book, target): 
     dict1 = {}
-    sum = 0
-    maxLen = 0
 
-    for i in range(0, n):
-        sum += arr[i]
-
-        if sum == k:
-            maxLen = max(maxLen, i+1)
-
-        remaining = sum - k
+    for i in range(0,n):
+        remaining = target - book[i]
 
         if remaining in dict1:
-            length = i - dict1[remaining]
-            maxLen = max(maxLen, length)
-        
-        if sum not in dict1:
-            dict1[sum] = i
-
-
+            return [dict1[remaining], i]
+        else:
+            dict1[book[i]] = i
     
-    return maxLen
- 
-arr = [1, 2, 3, 1, 1, 1, 1]
-N = 7     #Length of a
-k = 3     #Sum
+    return [-1,-1]
 
-print("Final Answer:- ", lenOfLongSubarr(arr,N,k))
+book= [3,3]
+print(read(len(book),book, target = 6))

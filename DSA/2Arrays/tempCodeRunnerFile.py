@@ -1,32 +1,19 @@
-#Method - Two Pointer  (Optimal Solution)
-def getLongestSubarray(a, k):
-    n = len(a) # size of the array.
+def findsum (n, arr, target) :
+    nums = sorted(arr) 
+    left = 0
+    right = n-1
 
-    left, right = 0, 0 # 2 pointers
-    Sum = a[0]
-    maxLen = 0
-    while right < n:
-        # if sum > k, reduce the subarray from left
-        # until sum becomes less or equal to k:
-        while left <= right and Sum > k:
-            Sum -= a[left]
-            left += 1
+    while left<right:
+        if nums[left] + nums[right] > target:
+            right -=1
 
-        # if sum = k, update the maxLen i.e. answer:
-        if Sum == k:
-            maxLen = max(maxLen, right - left + 1)
+        elif nums[left] + nums[right] == target:
+            return "YES"
 
-        # Move forward the right pointer:
-        right += 1
-        if right < n: 
-            Sum += a[right]
-
-    return maxLen
+        else:
+            left +=1
+    
+    return "NO", [-1,-1]
 
 
-if __name__ == "__main__":
-	a = [2, 3, 5, 1, 9]
-	k = 10
-
-	length = getLongestSubarray(a, k)
-	print(f"The length of the longest subarray is: {length}")
+print(findsum(n = 5, arr= [2,6,5,8,11], target = 1))
