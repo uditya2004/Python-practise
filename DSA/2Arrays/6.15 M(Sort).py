@@ -38,4 +38,43 @@ def sorting(arr):
 print(sorting(arr = [2,0,2,1,1,0,2]))      # Output:- [0,0,1,1,2,2]
 
 
+#===========================
 #Method 3:- Dutch National Flag Algo (Optimal solution)
+
+"""
+Rule 1 :-
+
+1. [0...low-1]       -> 0
+2. [low......mid-1]  -> 1
+3. [mid....high]     -> 0 or 1 or 2 (random)
+3. [high+1....n-1]   -> 2
+
+
+Rule 2:- 
+1.  arr[mid]= 0   -> swap( arr[low] and arr[mid])  and low ++   and mid ++
+2.  arr[mid]= 1   -> mid++
+3.  arr[mid]= 2   -> swap(arr[mid] and arr[high])   and  high --
+"""
+#TC: O(N)
+#SC: O(1)
+def sorting(arr):
+    low = 0
+    mid = 0
+    high = len(arr)-1
+
+    while mid <=high:
+        if arr[mid] == 0:
+            arr[low], arr[mid] = arr[mid], arr[low]
+            low +=1
+            mid +=1
+        
+        elif arr[mid] == 1:
+            mid +=1
+        
+        else:
+            arr[mid], arr[high] = arr[high], arr[mid]
+            high -=1
+    
+    return arr
+
+print(sorting(arr = [2,0,2,1,1,0,2]))      # Output:- [0,0,1,1,2,2]
