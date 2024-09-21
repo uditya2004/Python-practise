@@ -57,10 +57,19 @@ import math
 def largestsum(arr,n):
     max_sum = -math.inf
     sum = 0
+    ansStart = -1   #Used for printing indexes
+    ansEnd = -1     #Used for printing indexes
 
     for i in range(0,n):
+        if sum == 0:
+            ansStart = i
+
         sum +=arr[i]
-        max_sum = max(max_sum, sum)
+        
+        if sum>max_sum:
+            max_sum = sum
+            ansEnd = i
+
 
         if sum<0:
             sum = 0
@@ -69,9 +78,14 @@ def largestsum(arr,n):
     if max_sum < 0: 
         max_sum = 0
 
-    return max_sum
+    return max_sum , [ansStart, ansEnd]
 
 
 
 arr = [-2,1,-3,4,-1,2,1,-5,4]      #[4,-1,2,1] has the largest sum = 6. 
-print(largestsum(arr, len(arr)))
+result1, result2 = largestsum(arr,len(arr))
+print(result1)
+print(result2)
+
+
+
