@@ -1,29 +1,23 @@
-def findnum(arr, n):
-    #Applying Moore's Algo
-    majority_element = arr[0]
-    count = 1
+def Rearrange(arr,N):
+    # Create separate lists for positive and negative numbers.
+    result = [0]*N
     
-    for num in arr[1:]:
-        if count == 0:
-            majority_element = num
-        
-        if num == majority_element:
-            count += 1
-        else:
-            count -= 1
-    
-    #Verifying if the element is really a majority or not
-    count2 = 0
-    for j in arr:
-        if j == majority_element:
-            count2 +=1
-    
-    if count2 > n//2:
-        return majority_element
-    else:
-        return None
-        
+    pos_Ind = 0
+    neg_Ind = 1
 
-arr = [2,2,1,1,1,2,2]
-N= 7
-print(findnum(arr, N))      # Output:- 2
+    for i in range(0,N):
+        if arr[i] > 0:
+            result[pos_Ind] = arr[i]
+            pos_Ind +=2
+        
+        elif arr[i] < 0:
+            result[neg_Ind] = arr[i]
+            pos_Ind +=2
+    
+    return result
+
+
+arr = [1,2,-3,-1,-2,3]
+N = 6
+
+print(Rearrange(arr,N))
