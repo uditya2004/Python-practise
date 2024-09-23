@@ -1,23 +1,12 @@
-def Rearrange(arr,N):
-    # Create separate lists for positive and negative numbers.
-    result = [0]*N
+
+def reverse(arr, low, high):
     
-    pos_Ind = 0
-    neg_Ind = 1
-
-    for i in range(0,N):
-        if arr[i] > 0:
-            result[pos_Ind] = arr[i]
-            pos_Ind +=2
-        
-        elif arr[i] < 0:
-            result[neg_Ind] = arr[i]
-            pos_Ind +=2
+    while low<high:
+        arr[low], arr[high] = arr[high], arr[low]
+        low +=1
+        high -=1
     
-    return result
+    return arr
 
-
-arr = [1,2,-3,-1,-2,3]
-N = 6
-
-print(Rearrange(arr,N))
+arr = [1,3,2]
+print(reverse(arr, 0, len(arr)-1))
