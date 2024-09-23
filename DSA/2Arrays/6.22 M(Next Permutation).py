@@ -10,7 +10,7 @@ Note:-
 - if "index_of_breaking_point_element" = -1, then reverse the number and that will be your answer
 """
 
-#Method - 1 :- In this we used our implemented reverse function
+#Method - 1 (Optimal Solution) :- In this we used our implemented reverse function   
 def reverse(arr, low, high):
     
     while low<high:
@@ -24,28 +24,28 @@ def reverse(arr, low, high):
 def nextPermutation(arr,n):
 
     # Step 1: Find the break point:
-    ind = -1         # break point
-    for i in range(n-2, -1,-1):
-        if arr[i] < arr[i+1]:
-            ind = i
-            break
+    ind = -1                          # initializing breaking point as -1
+    for i in range(n-2, -1,-1):       # traversing from right to left in array
+        if arr[i] < arr[i+1]:         # We compare current element with i+1 (i.e it's just next element on it's right) . 
+            ind = i                   # If a[i] < a[i+1] then break point is found. 
+            break                     # Break the loop as we found the break point, purpose of this loop is done.
     
 
-    # If break point does not exist:
-    if ind == -1:
+    # Step 1.1:- HANDLE EDGE CASE:- If break point does not exist:
+    if ind == -1:                      # ind= -1 means the whole array is in descending order and the value of ind didn't change.
         # reverse the whole array:
-        arr= reverse(arr, 0, n-1)
+        arr= reverse(arr, 0, n-1)      # If the whole array is in descending order then reverse the whole array and that will be your answer
         return arr
     
 
     # Step 2: Find the next greater element 
-    for j in range(n-1, ind, -1):
-        if arr[j] > arr[ind]:
-            arr[j], arr[ind] = arr[ind], arr[j]    #and swap it with arr[ind]:
-            break
+    for j in range(n-1, ind, -1):                  # Traversing from n-1 till ind+1
+        if arr[j] > arr[ind]:                      # The element moving from n-1 till ind+1 will be in increasing order. So the 1st element that is greater than arr[ind] is the next greater element.
+            arr[j], arr[ind] = arr[ind], arr[j]    # now swap that element with arr[ind]:
+            break                                  # We break as the purpose of this loop is over.
     
     # Step 3: reverse the right half:
-    arr = reverse(arr, ind+1, n-1)
+    arr = reverse(arr, ind+1, n-1)             # reverse this part of the array -> from ind+1, n-1
     return arr
 
     
@@ -54,7 +54,7 @@ print(nextPermutation(arr,len(arr)))
 
 
 #===============
-#Method 2:- We use python reversed feature
+#Method 1.1:- We use python reversed feature
 
 # def nextPermutation(nums):
 
