@@ -34,20 +34,20 @@ print(findLeader(arr, len(arr)))
 #Method - 2: Using 2 pointers.
 # TC: O(N)
 #SC: O(N)
-# def findLeader(arr, n):
+def findLeader(arr, n):
 
-#     # Step:- 1 - Collect all the leaders
-#     leader= []
-#     maxel= float("-inf")    
-#     for i in range(n-1, -1,-1):
-#         if arr[i] > maxel:
-#             maxel = arr[i]
-#             leader.append(arr[i])
+    # Step:- 1 - Collect all the leaders
+    leader= []
+    maxel= float("-inf")    
+    for i in range(n-1, -1,-1):
+        if arr[i] > maxel:
+            maxel = arr[i]
+            leader.append(arr[i])
 
-#     # Step:- 2 - Formatting the answer
-#     leader.reverse()    #Time complexity: O(N) 
+    # Step:- 2 - Formatting the answer
+    leader.reverse()    #Time complexity: O(N) 
 
-#     return leader 
+    return leader 
 
-# arr = [10, 22, 12, 3, 0, 6]
-# print(findLeader(arr, len(arr)))
+arr = [10, 22, 12, 3, 0, 6]
+print(findLeader(arr, len(arr)))
