@@ -10,7 +10,9 @@ Note:-
 - if "index_of_breaking_point_element" = -1, then reverse the number and that will be your answer
 """
 
-#Method - 1 (Optimal Solution) :- In this we used our implemented reverse function   
+#Method - 1 (Optimal Solution) :- In this we used our implemented reverse function
+# TC:- O(3N)
+# SC: O(1)   
 def reverse(arr, low, high):
     
     while low<high:
