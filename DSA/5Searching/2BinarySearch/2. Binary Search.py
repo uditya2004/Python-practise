@@ -1,30 +1,44 @@
-# The given list should be sorted and non-duplicate element list for applying binary search.
+"""
+Concept:- 
+- For applying Binary Search in a list, following things needed:-
+        1. List should be sorted
+        2. List can have duplicate or non-duplicate elements
 
-#Method 1- using recursion
-# def Search(arr,ele, low, high):
-#     if low > high:
-#         return -1
-#     midind= (low+high) // 2
+Steps:- 
+1. Take 2 pointers low and high and calculate mid= (low+high) // 2
+2. Compare the target with the mid and accordingly move the low or high pointer to trim down the search space.
+"""
 
-#     if arr[midind] == ele:
-#         return midind
+#Method 1- using recursion      (Assume Non-duplicate elements present in list)
+#TC: Log2(N)
+# SC: O(log n)
+def Search(arr,ele, low, high):
+    if low > high:
+        return -1
     
-#     elif ele < arr[midind]:
-#         return Search(arr,ele, low, midind-1)
+    midind= (low+high) // 2
+
+    if arr[midind] == ele:
+        return midind
     
-#     else:
-#         return Search(arr,ele, midind + 1, high)
+    elif ele < arr[midind]:
+        return Search(arr,ele, low, midind-1)
+    
+    else:
+        return Search(arr,ele, midind + 1, high)
 
-# lst=[3,2,5,6]
-# low = 0
-# high = len(lst)-1
-# key = 5
+lst=[3,2,5,6]
+low = 0
+high = len(lst)-1
+key = 5
 
-# print(Search(lst,key,low,high))
+print(Search(lst,key,low,high))
 
 #================================
 
-#Method 2 
+#Method 2 : Using simple loop method
+# TC: Log2(N)
+# SC: O(1)
 def Search(arr,ele, low, high):
     
     while low <= high:         #We will stop when low and high crosses each other

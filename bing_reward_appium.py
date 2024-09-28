@@ -9,7 +9,7 @@ from groq import Groq
 import os
 
 # Set the API key as an environment variable
-os.environ["GROQ_API_KEY"] = "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"
+os.environ["GROQ_API_KEY"] = "Enter GROQ_API_KEY here"
 
 # Initialize Groq API client using the environment variable
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
