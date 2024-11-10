@@ -102,3 +102,21 @@ Naming conventions:
 
 #-------------------------------------
 
+# Python program to demonstrate private members
+
+# # Creating a Base class
+# class Base:
+#     def __init__(self):
+#         self.a = "GeeksforGeeks"
+#         self.__c = "GeeksforGeeks"        #private member (adding double underscore in front of it)
+
+# # Creating a derived class
+# class Derived(Base):
+#     def __init__(self):
+#         # Calling constructor of Base class
+#         Base.__init__(self)
+
+# # Driver code
+# obj2 = Derived()
+# # print("Here ->", obj2.__c)      #cannot be accessed as python internally change the name of private member (name mangling) by adding _Base in the name of the member i.e "_Base__c"
+# print("Here ->", obj2._Base__c)  #now can be accessed
