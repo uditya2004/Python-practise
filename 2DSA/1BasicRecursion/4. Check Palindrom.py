@@ -19,7 +19,7 @@ check_pal(str1)
 #============================
 #Method 2: Using 2 Pointer (Run a for loop till half the length of the string in order to check the first and last character of the string.)
 # TC: O(N/2) = O(N)
-# SC: O(1)  {Using temp array "temp"}
+# SC: O(1)  
 
 def check_pal(str, low , high):
     mid = (low + high) // 2
