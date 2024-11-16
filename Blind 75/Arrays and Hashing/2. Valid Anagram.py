@@ -26,7 +26,7 @@ def isAnagram(s, t):
     count_s = {}
     count_t = {}
 
-    #Case - 1
+    #Edge Case
     if len(s) != len(t):
         return False
 
@@ -54,11 +54,15 @@ print(isAnagram(s, t))
 # SC: O(26) = O(1)
 def isAnagram(s, t):
     
+    #Edge Case
+    if len(s) != len(t):
+        return False
+    
     count = [0]*26   # As ABC has 26 alphabet , we initialize array of size 26
 
     for i in range(0, len(s)):
-        count[ord(s[i]) - ord("a")] +=1     #adding
-        count[ord(t[i]) - ord("a")] -=1     #subtracting
+        count[ord(s[i]) - ord("a")] +=1     # Increment count for `s`
+        count[ord(t[i]) - ord("a")] -=1     # Decrement count for `t`
 
     #If it's anagram then the array will be [0]*26 again , as we added and subtracted same number of times
     for j in count:
@@ -67,8 +71,8 @@ def isAnagram(s, t):
         
     return True
     
-s = "rat"
-t = "car"
+s = "a"
+t = "ab"
 
 print(isAnagram(s, t))
 
