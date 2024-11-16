@@ -9,7 +9,7 @@ from collections import defaultdict
 
 def groupAnagrams(strs):
 
-    res = defaultdict(list)    # if we access a key that doesn’t exist in dictionary, it automatically creates that key and initializes it with an empty list ([]).
+    res = defaultdict(list)           # if we access a key that doesn’t exist in dictionary, it automatically creates that key and initializes it with an empty list ([]).
     
     for s in strs:
         sortedS = ''.join(sorted(s))  #TC: O(NLogN), SC: O(K)  ## making the string , a sorted string
@@ -20,6 +20,7 @@ def groupAnagrams(strs):
 strs = ["act","pots","tops","cat","stop","hat"]
 
 print(groupAnagrams(strs))
+
 
 #============
 #Using dictionary + array hashmap  - Best solution
@@ -33,8 +34,8 @@ def groupAnagrams(strs):
     res = defaultdict(list)
 
     for word in strs:
-        count = [0] * 26                 # it's like storing a code for a word, all anagrams will have same code
-        for char in word:           # iterating a single word for every c
+        count = [0] * 26                   # it's like storing a code for a word, all anagrams will have same code
+        for char in word:                  # iterating a single word for every c
             count[ord(char) - ord('a')] += 1
 
         res[tuple(count)].append(word)     # code is the key and all the words with same code are appended to the list associated with that key. (Here we made the key as "tuple datatype" as dictionary key shoulbe be of immutable type
