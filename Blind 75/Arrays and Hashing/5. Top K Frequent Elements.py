@@ -4,36 +4,36 @@ Given an integer array nums and an integer k, return the k most frequent element
 # Using dictionary for count + Reverse sort
 # TC: O(N + N + NLogN + K) = O(NLogN)
 # SC: O(N + N + K) = O(N + k)
-# def topKFrequent(nums, k):
+def topKFrequent(nums, k):
 
-#     #Storing the frequency of each element in dictionary
-#     dict1 = {}
-#     for i in range(len(nums)):
-#         dict1[nums[i]] = 1 + dict1.get(nums[i],0)
+    #Storing the frequency of each element in dictionary
+    dict1 = {}
+    for i in range(len(nums)):
+        dict1[nums[i]] = 1 + dict1.get(nums[i],0)
     
-#     #Storing in an array so we can reverse sort it
-#     arr = []
-#     for num,cnt in dict1.items():
-#         arr.append([cnt,num])
-#     arr.sort(reverse=True)    #Reverse sorting
+    #Storing in an array so we can reverse sort it
+    arr = []
+    for num,cnt in dict1.items():
+        arr.append([cnt,num])
+    arr.sort(reverse=True)    #Reverse sorting
 
-#     #Printing the result
-#     result = []
-#     for j in range(0,k):
-#         result.append(arr[j][1])
+    #Printing the result
+    result = []
+    for j in range(0,k):
+        result.append(arr[j][1])
     
-#     return result
+    return result
 
 
-# nums = [1,1,1,2,2,3]
-# k = 2
-# print(topKFrequent(nums, k))
+nums = [1,1,1,2,2,3]
+k = 2
+print(topKFrequent(nums, k))
 
 
 #========================================
-# Using dictionary for count + array with count as indexes - Best Solutions
-# TC: 
-# SC: 
+# Using dictionary for count + array with count as indexes (BUCKET SORT) - Best Solutions
+#TC: O(N + N + N + N*K) = O(N), as k is smaller than N
+#SC: O(N + N + K) = O(N)
 def topKFrequent(nums, k):
 
     #Storing the frequency of each element in dictionary
