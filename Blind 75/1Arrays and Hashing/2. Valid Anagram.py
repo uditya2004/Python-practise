@@ -42,7 +42,15 @@ def isAnagram(s, t):
         count_s[s[i]] = 1 + count_s.get(s[i], 0)          
         count_t[t[i]] = 1 + count_t.get(t[i], 0)
     
+    """
+    The comparison(count_s == count_t) checks:
+
+    - Keys: Both dictionaries must have the exact same set of keys.
+    - Values: For each key, the corresponding values in both dictionaries must be equal.
+    If both conditions are met, the dictionaries are considered equal. Otherwise, they are not.
+    """
     return count_s == count_t
+    
 
 
 s = "rat"
