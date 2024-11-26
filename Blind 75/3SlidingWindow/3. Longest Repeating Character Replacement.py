@@ -31,7 +31,7 @@ k = 1
 print(characterReplacement(s, k))
 
 #=================
-#Best Solution  Sliding window
+#Best Solution Sliding window
 # TC: O(N)
 # SC: O(26) = O(1)
 def characterReplacement(s, k):
