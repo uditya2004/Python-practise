@@ -3,7 +3,7 @@
 - s consists of only uppercase English letters.
 - Return the length of the longest substring containing the same letter you can get after performing the above operations.
 """
-#Brute Force sliding window
+#Two Pointers:- Brute Force
 #TC: O(N^2)
 #SC: O(26) = O(1)
 def characterReplacement(s, k):
