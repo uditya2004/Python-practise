@@ -38,7 +38,7 @@ def characterReplacement(s, k):
     res = 0
     hash = {}    # In the worst case, it can store all unique characters (English letters i.e 26) in the string
 
-    i = 0
+    i = 0        # Left Pointer
     max_freq = 0
 
     for j in range(0, len(s)):
