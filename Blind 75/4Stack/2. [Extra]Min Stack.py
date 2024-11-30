@@ -1,5 +1,5 @@
 """
-Make all the function in O(1) TC
+Make all the methods in O(1) TC
 """
 
 # Brute Force
