@@ -29,3 +29,20 @@ num2.display()
 
 num3= num1 + num2
 print(f"{num3.real}i + {num3.img}j")
+
+#=================
+# Example 2
+class A:
+    def __init__(self,a):
+        self.a = a
+
+    def __add__(self,o):
+        return self.a + o.a
+
+obj1 = A(1)
+obj2 = A(2)
+obj3 = A("Uditya")
+obj4 = A("Kumar")
+
+print(obj1 + obj2)    # Actual working:- A.__add__(ob1 , ob2)
+print(obj3 + obj3)
