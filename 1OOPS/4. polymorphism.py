@@ -16,9 +16,7 @@ class Complex:
         print(f"{self.real}i + {self.img}j")
     
     def __add__(self,otherno):
-        return Complex(self.real + otherno.real, self.img + otherno.img)
-
-    
+        return (f"{self.real + otherno.real}i + {self.img + otherno.img}j")
 
 
 num1= Complex(1,2)
@@ -27,8 +25,7 @@ num1.display()
 num2= Complex(3,4)
 num2.display()
 
-num3= num1 + num2
-print(f"{num3.real}i + {num3.img}j")
+print("result:- ",num1 + num2)   # Actual working:- Complex.__add__(num1 , num2)
 
 #=================
 # Example 2
