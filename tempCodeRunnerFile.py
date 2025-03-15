@@ -1,2 +1,3 @@
-s = "AABABBA"
-print([i for i in s])
+
+l = []
+print(l[-1])

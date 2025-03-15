@@ -44,7 +44,23 @@ class MinStack(object):
 # Better solution
 # Time complexity: O(1) for all operations.
 # Space complexity: O(n)
+"""
+APPROACH
+- make a list "stack"
+- make a list "min" to track the minimum element in the stack. (last element of this stack or recently added element in this stack will represent the current minimum of the Main stack)
 
+- while push or pop make sure to update the list "min" accordingly.
+
+- PUSH
+    - push in "stack"
+    - check the pushed value if it's smaller that last element of "min" list:-
+        - If smaller, then push it in "min"
+
+- POP
+    - Pop from "stack", 
+    - check if the popped element = min[-1] (means if the popped elemnent is the current min)
+        - If found equal, then pop from "min" as well 
+"""
 class MinStack(object):
 
     def __init__(self):
@@ -97,7 +113,9 @@ class MinStack(object):
 
 # Best solution:- use a "difference encoding" strategy for storing values in the stack
 """
-in stack we don't store pushed elements , we store "element - min" instead
+We store:-
+    - in stack -> pushedElement - currentMin
+    - in "min" -> pushedElement
 """
 # Time complexity: O(1) for all operations.
 # Space complexity: O(1)
@@ -124,13 +142,13 @@ class MinStack:
         if not self.stack:      # If poped from empty stack do nothing
             return
         
-        pop = self.stack.pop()
+        poppedElement = self.stack.pop()
         
         # -ve elements will be stored in the stack only in case when element is smaller than min.
         # Case - 1:- Popped element is +ve:- no change to self.min.
         # Case - 2:- Popped element is -ve:- update self.min
-        if pop < 0:    
-            self.min = self.min - pop   # this is the case when the poped element is the current min element, so to go to prev min we do  "self.min - pop" where pop is -ve num -> self.min+pop
+        if poppedElement < 0:    
+            self.min = self.min - poppedElement   # this is the case when the poped element is the current min element, so to go to prev min we do  "self.min - pop" where pop is -ve num -> self.min+pop
 
 
     def top(self) -> int:
