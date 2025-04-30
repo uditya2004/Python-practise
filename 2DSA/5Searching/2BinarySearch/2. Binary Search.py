@@ -11,7 +11,7 @@ Steps:-
 
 #Method 1- using recursion      (Assume Non-duplicate elements present in list)
 #TC: Log2(N)
-# SC: O(log n)
+# SC: O(log n)     (due to function call stack)
 def Search(arr,ele, low, high):
     if low > high:
         return -1
