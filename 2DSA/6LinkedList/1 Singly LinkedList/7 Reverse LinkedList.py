@@ -15,12 +15,12 @@ def Reverse1(head):
     stack = []
     current = head
 
-    # Pushing all the elements to a stack
+    # 1st traversal:- Pushing all the elements to a stack
     while current != None:   
         stack.append(current.data)
         current = current.next
     
-    #Poping elements from stack and putting into linked list
+    # 2nd Traversal:- Poping elements from stack and overwriting elements of linked list
     current = head
     while current != None: 
         current.data = stack.pop()
