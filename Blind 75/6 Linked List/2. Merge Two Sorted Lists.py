@@ -2,7 +2,11 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
-
+"""
+1. Create a dummy Node = -1 and a pointer "curr" pointing to this node -> in the end we return "dummy.next", so this -1 node is of no use for us.
+2. We place 2 pointers at l1 and l2.
+3. Out of the 2 pointer get the smaller data node and add it to the dummy linked list, then move these 2 pointers
+"""
 class Solution:
     def mergeTwoLists(self, list1, list2):  # list1 and list2 are the heads of the two list
         dummy = ListNode(-1)
