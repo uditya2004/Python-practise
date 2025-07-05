@@ -10,7 +10,7 @@
 70   60   80
 
 Note: 
-→ Every Node will have 1 data and 2 reference field 
+→ Every Node will have 1 data and 2 reference field (left and right). 
 → Both reference fields, are initially set to None. 
 → Leaf Node, will have both reference set to None, as they don't have any children.
 
