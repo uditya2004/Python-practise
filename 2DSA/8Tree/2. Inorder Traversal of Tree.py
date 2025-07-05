@@ -1,5 +1,9 @@
 """
 Inorder :- Left subtree -> Root -> Right Subtree
+
+- Recursively goes left as far as possible
+- Move up till the root
+- Then moves right till bottom
 """
 class Node:
     def __init__(self,data):
