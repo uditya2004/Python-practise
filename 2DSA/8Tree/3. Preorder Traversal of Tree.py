@@ -1,5 +1,7 @@
 """
 Preorder :- Root -> Left subtree -> Right Subtree
+
+Pre = Root First
 """
 class Node:
     def __init__(self, data):

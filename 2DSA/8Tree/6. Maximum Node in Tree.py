@@ -1,3 +1,7 @@
+"""
+Find the node in the tree having the maximum value
+"""
+
 import math
 
 class Node:

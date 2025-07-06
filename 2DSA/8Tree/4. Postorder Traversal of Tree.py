@@ -1,5 +1,7 @@
 """
 Postorder :- Left subtree -> Right Subtree -> Root
+
+Post= Root last
 """
 class Node:
     def __init__(self, data):

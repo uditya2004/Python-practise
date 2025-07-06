@@ -1,6 +1,8 @@
 """
 Inorder :- Left subtree -> Root -> Right Subtree
 
+In = Root in the middle
+
 - Recursively goes left as far as possible
 - Move up till the root
 - Then moves right till bottom
