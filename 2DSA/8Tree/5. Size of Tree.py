@@ -13,6 +13,7 @@ def Treesize(root):
         return 0
     
     #For Traversal we can use any type(inorder or postorder or Preorder)
+    # this function uses post-order traversal.
     else:
         Left_Subtree_size = Treesize(root.left)             # Recursively find the size of the left subtree and store it in "LeftSubtree_size"
         Right_Subtree_size = Treesize(root.right)           # Recursively find the size of the right subtree and store it in "RightSubtree_size"
