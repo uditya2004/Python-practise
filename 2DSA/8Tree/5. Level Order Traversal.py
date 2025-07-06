@@ -28,6 +28,9 @@ class Node:
         self.left = None
         self.right = None
 
+
+# TC: O(N) , visiting each node only once 
+# SC: O(N) , for storing nodes in queue
 def LevelOrderTraversal(root):
     result = []
 
