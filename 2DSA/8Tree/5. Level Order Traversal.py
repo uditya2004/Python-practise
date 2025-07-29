@@ -34,21 +34,28 @@ class Node:
 def LevelOrderTraversal(root):
     result = []
 
+    if not root:
+        # If the tree is empty,
+        # return an empty list
+        return result
+
     q = deque()        # initializing a queue
     q.append(root)     # adding root node to the queue
 
     while q:           # run until the queue is empty
         level = []
-        q_length = len(q)    # Determine the number of nodes at the current level (size of the queue).
+        size = len(q)    # Determine the number of nodes at the current level (size of the queue).
 
-        for i in  range(q_length):
-            node = q.popleft()
+        for i in  range(size):
+            node = q.popleft()  # Get the front node in the queue
 
-            if node != None:
-                level.append(node.data)
+            level.append(node.data)
                 
-                # adding the child nodes to the queue
+            # adding the child nodes to the queue, if exists
+            if node.left:
                 q.append(node.left)  
+            
+            if node.right:
                 q.append(node.right)
         
         if level:  # if level list is not empty then add it to result list

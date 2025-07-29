@@ -42,6 +42,13 @@ nums = [1,2,3,4]
 print(hasDuplicate(nums))
 
 #==========================
+"""
+Approach:-
+
+-For an element check if the element is in the dictionary or not:-
+    - if already in the dictionary, means we are currently at a duplicate element, so return True (found duplicate).
+    - If not in dictionary, store (element: element_freq) as a pair in the dictionary. 
+"""
 #Using Dictionary :- Best Solution
 #TC: O(N)
 #SC: O(N)
