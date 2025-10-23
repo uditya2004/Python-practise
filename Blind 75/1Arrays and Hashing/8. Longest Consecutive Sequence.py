@@ -41,10 +41,13 @@ def longestConsecutive(nums):
 
     # Find the longest sequence
     for element in nums:                 #TC: O(N)
-
-        if element-1 not in nums:        #then it's the first element of the sequence
+        """
+        - List Lookup:- Searching for an item in a list has a time complexity of O(n).
+        - Set Lookup:- Searching for an item in a set has an average time complexity of O(1). Sets use a hash table, which allows for near-instantaneous lookups.
+        """
+        if element-1 not in new_arr:        #then it's the first element of the sequence
             
-            # find consecutive numbers
+            # find next consecutive numbers from the current element
             x=element
             count = 1
             while x+1 in new_arr:  

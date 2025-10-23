@@ -3,21 +3,21 @@ Given an integer array nums and an integer k, return the k most frequent element
 """
 # Using dictionary for count + Reverse sort
 # TC: O(N + N + NLogN + K) = O(NLogN)
-# SC: O(N + N + K) = O(N + k)
+# SC: O(N + N + K) = O(N)
 def topKFrequent(nums, k):
 
     #Storing the frequency of each element in dictionary
     dict1 = {}
-    for i in range(len(nums)):
-        dict1[nums[i]] = 1 + dict1.get(nums[i],0)
+    for i in nums:
+        dict1[i] = 1 + dict1.get(i,0)
     
     #Storing in an array so we can reverse sort it
     arr = []
     for num,cnt in dict1.items():
         arr.append([cnt,num])
-    arr.sort(reverse=True)    #Reverse sorting
+    arr.sort(reverse=True)    #Reverse sorting (sort by cnt [cnt,num], but if two element have same cnt, then sort by num)
 
-    #Printing the result
+    # taking k elements from starting of "arr"
     result = []
     for j in range(0,k):
         result.append(arr[j][1])
@@ -38,8 +38,8 @@ def topKFrequent(nums, k):
 
     #Storing the frequency of each element in dictionary
     dict1 = {}
-    for i in range(len(nums)):
-        dict1[nums[i]] = 1 + dict1.get(nums[i],0)
+    for i in nums:
+        dict1[i] = 1 + dict1.get(i,0)
     
     # Creating an array with frequency as it's index and storing all the element having same frequency at the same index in list container
     # arr = [[]] * (len(nums)+1)                  #Incorrect way :- all elements in arr will point to the same list. Modifying one of these lists will affect all of them because they are all references to the same object.

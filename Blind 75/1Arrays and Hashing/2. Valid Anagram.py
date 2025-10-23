@@ -24,7 +24,7 @@ print(isAnagram(s, t))
 #===============
 # Using Dictionary - Better Solution
 # TC: O(N)
-# SC: O(N)
+# SC: O(2N)
 def isAnagram(s, t):
     count_s = {}
     count_t = {}

@@ -1,0 +1,24 @@
+Sliding Window PAtterns:-
+    - Pattern 1:- Content window (eg: sum of consecutive element equal to target)
+
+    - Pattern 2:- Longest subarray(for array problem)/substring(for string problem), where we have a condition
+	    - subarray:- consecutive elements in an array
+        - Methods:
+            - Brute force:- Generate all subarray
+            - Better:- Sliding window with shrinking TC:- O(N (for moving right pointer) + N (for shrinking))
+            - Optimal:- TC:- O(N) -- instead of keep shrinking till a valid window, we shrink until the current max length i.e just 1 time (so just an "if" condition needed instead of "while").
+
+    - Pattern 3:- No. of subarrays where <condition>
+        - Eg:- Number of subarray with sum = k
+
+        - Method:
+            - Break it down into 2 parts:
+                - x = no. of subarray where sum <=k
+                - y = no. of subarray where sum <=k-1
+                - So, final answer will be "x - y"
+    
+    - Pattern 4:- Shortest/Minimum window where <condition>
+        - Method:-
+            - Expand until you get a valid window
+            - Once you get a valid window:
+                - Keep shrinking it until it remain a valid window and the minimum subarray store it as an answer.

@@ -2,7 +2,7 @@
 Given an array of strings strs, group all anagrams together into sublists. You may return the output in any order.
 """
 #Using dictionary + sorting
-#TC: O(N* NLogN)
+#TC: O(N* (K*LogK)), where N is the number of words in list and k is the character in the word
 #SC: O(N*K)          (The space complexity for sorting a string of length k is O(k). Since this is done for each of the n strings, the total auxiliary space for sorting is O(n * k).)
  
 from collections import defaultdict
@@ -38,7 +38,7 @@ def groupAnagrams(strs):
         for char in word:                  # iterating a single word for every c
             count[ord(char) - ord('a')] += 1
 
-        res[tuple(count)].append(word)     # code is the key and all the words with same code are appended to the list associated with that key. (Here we made the key as "tuple datatype" as dictionary key shoulbe be of immutable type
+        res[tuple(count)].append(word)     # code is the key and all the words with same code are appended to the list associated with that key. (Here we made the key as "tuple datatype" as dictionary key should be of immutable type
 
     return list(res.values())
 

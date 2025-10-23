@@ -50,9 +50,13 @@ Notice that the solution set must not contain duplicate triplets.
 #             num_3 = -(nums[i] + nums[j])        #If we found 3rd element in the dict, then we don't need to check 1st + 2nd + 3rd == 0 , as we have calculated 3rd in a way it will make sum zero
 
 #             # Find the element in the set:
-#             if num_3 in dict1 and dict1[num_3]>j:       # "dict1[num_3]>j" make sure 3rd element is of diffent indexes than i and j
-#                 result.add( tuple( sorted([nums[i], nums[j], num_3]) ))
+#             if num_3 in dict1 and dict1[num_3]>j:       # "dict1[num_3]>j" make sure 3rd element is of diffent indexes than i and j. Conditions like "dict1[num_3]<j" , "i<dict1[num_3]<j" is already covered by the i and j pointer previously only.
                 
+#                 # Sorted :- to avoid duplicate triplet, duplicate triplet looks same when sorted.
+#                 # made Tuple because:- Lists are mutable, and Python does not allow mutable objects inside a set (because elements in a set must be hashable). Tuples are immutable, so they can safely be stored in a set.
+#                 result.add( tuple( sorted([nums[i], nums[j], num_3]) ))         
+                
+                      
 #     #Converting result back to list
 #     return [list(i) for i in result]   #SC: O(T)
     
@@ -88,21 +92,24 @@ Notice that the solution set must not contain duplicate triplets.
 
 #=============================
 # Fix one number and then solve like 2 SUM
-#TC: 
-#SC: 
+#TC: O(NLogN + N*N) = O(NlogN + N^2)
+#SC: O(N)  , space for the output list.
 def threeSum(nums):
     nums.sort()
     result = []
 
-    for i in range(0, len(nums)):       
+    # TC: O(N)
+    for i in range(0, len(nums)):   # For each iteration, this index element we keep fixed.    
 
-        # remove duplicates:
+        # remove duplicates: After sorting duplicate elements come together, so if current element = previous element, then current element is duplicate
         if i>0 and nums[i] == nums[i-1]:   # after moving i if num[i] is still the same then move i once more  . Also "i>0" so checking i-1 doesn't case error
             continue
         
+        # Searching for the other 2 numbers now like 2Sum problem
         low = i+1
         high = len(nums)-1
 
+        # TC: O(N)
         while low<high:
             if nums[i] + nums[low] + nums[high]> 0:
                 high -=1
@@ -114,10 +121,10 @@ def threeSum(nums):
                 high -=1
 
                 # skip the duplicates:
-                while low<high and nums[low]  == nums[low-1]:  #after increasing the low if it's still the same number , then increase once more , as our goal to move low is to increase the sum
+                while low<high and nums[low]  == nums[low-1]:  #after increasing the low if it's still the same number , then increase more , as our goal to move low is to increase the sum
                     low +=1
 
-                while low<high and nums[high]  == nums[high+1]:  #after moving the high if it's still the same number , then move once more , as our goal to move high is to decrease the sum
+                while low<high and nums[high]  == nums[high+1]:  #after moving the high if it's still the same number , then move more , as our goal to move high is to decrease the sum
                     high -=1
 
     return result

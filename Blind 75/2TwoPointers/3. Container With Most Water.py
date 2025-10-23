@@ -32,7 +32,20 @@ Notice that you may not slant the container.
 # print(maxArea(height))
 
 #========================
-# 2 pointer and move the pointer having the smallest line because smallest line control the volume ,  if we move the biggest line pointer, water level height will remains the same but the width will decrease which will always decrease the volume.
+""""
+Two pointer approach:
+
+- Move the pointer having the smaller height because smaller height control the volume.  
+- If we move the biggest line pointer, water level height will remains the same but the width will decrease which will always decrease the volume.
+
+- For a maximum volume, we try to:-
+    - Maximize the height of the smaller wall
+    - Maximize the width of the container
+
+- So we start with the maximum width possible in the container (putting two pointer on opposite ends of the container).
+- We move the pointer having the smaller height inwards, hoping to get a taller wall.
+"""
+
 #TC: O(N) , as each element in the list is considered at most once.
 #SC: O(1) 
 def maxArea(height):
