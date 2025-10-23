@@ -73,7 +73,7 @@ def lengthOfLongestSubstring(s):
     while i<len(s) and j < len(s):
 
         if s[j] in dict1:
-            if dict1[s[j]] >= i:     # if the character is already present in the dictionary and is between i and j , then move the i to next next of character 
+            if dict1[s[j]] >= i:     # if the character is already present in the dictionary and is between i and j , then current element (s[j]) is a duplicate and is present already in the previous subarray length. So shrink window by moving the i to next next of character to remove the duplicate from the wimdow. 
                 i = dict1[s[j]] + 1
         
         max_len = max(max_len, j-i+1)   # update the max_len
