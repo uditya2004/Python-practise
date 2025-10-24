@@ -71,11 +71,15 @@ def lengthOfLongestSubstring(s):
     i=0
     j=i
     while i<len(s) and j < len(s):
-
+        
+        # If the character is already present in the dictionary and is between i and j , then current element (s[j]) is a duplicate and is present already in the previous subarray length. 
+        # So shrink window by moving the i to next of character to remove the duplicate from the wimdow. 
         if s[j] in dict1:
-            if dict1[s[j]] >= i:     # if the character is already present in the dictionary and is between i and j , then current element (s[j]) is a duplicate and is present already in the previous subarray length. So shrink window by moving the i to next next of character to remove the duplicate from the wimdow. 
+            if dict1[s[j]] >= i:
                 i = dict1[s[j]] + 1 # move the i to the next index of of the duplicate element already in the subarray.
         
+
+        # By above "if condition" we made the invalid window valid again, so we can continue with below steps as usual
         max_len = max(max_len, j-i+1)   # update the max_len
         dict1[s[j]] = j                 # update the index of character in dictionary
         j +=1                           # move the pointer j

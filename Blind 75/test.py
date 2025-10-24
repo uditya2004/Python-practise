@@ -1,25 +1,23 @@
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        dict1 = {}
-        length = 0
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        hash = [0]*26
 
-        i = 0
-        j = i
-
-        while i < len(s) and j < len(s):
-
-            if s[j] in dict1:
-                if dict1[s[j]] >= i:
-                    i = dict1[s[j]] + 1
-            
-            # By above "if condition" we made the invalid window valid again, so we can continue with below steps as usual
-            length = max(length, j-i+1)
-            dict1[s[j]] = j
-            j +=1
+        for element in s1:
+            hash[ord(element) - ord('a')] +=1
         
-        return length      
 
+        for element in s2:
+            hash_index = hash[ord(element) - ord('a')]
+            if hash[hash_index] >= 1:
+                hash[hash_index] -=1
+        
+        for element in hash:
+            if element != 0:
+                return False
+        
+        return True
 
 obj = Solution()
-s = "pwwkew"
-print(obj.lengthOfLongestSubstring(s))
+s1 = "ab"
+s2 = "eidboaoo"
+print(obj.checkInclusion(s1,s2))
