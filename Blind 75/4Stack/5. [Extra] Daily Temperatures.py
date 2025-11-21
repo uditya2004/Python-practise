@@ -51,44 +51,52 @@ print(dailyTemperatures(temperatures))
 
 #===========================================================
 """
-- Make a result list:- Initialize every element as zero (default value for all)
-- Make a empty stack list for keeping track of previous smaller elements.
-
-- Traverse through the temperature array:-
-    - If the stack if empty, push the current element to the stack, move to the next element.
-    
-    - Compare the current element with the top of the stack,
-
-        - if the StackTopElement < current element
-            - pop the Top
-            - Update Top's corresponding value in result list to (currentNumIndex - StackTopElementIndex)
-            - continue the same process with the new Top, until the stack is empty
-        
-        - if the StackTopElement > current element
-            - push current element in the stack
+APPROACH:- Nearest Greater to Right Pattern
+- Traverse from right to left. For each element:- 
+    - we pushed all the elements to it's right to a stack
+    - pop elements from the stack to compare if it's greater than current element
 """
-# Best Solution:- Monotonic Decreasing Stack (Best Solution)
 
-def dailyTemperatures(temperatures: list[int]) -> list[int]:
-    # Every element initialize it with 0
-    result = [0] * len(temperatures)
+# TC:- O(N)
+# SC:- O(N)
+class Solution:
+    def dailyTemperatures(self, temperatures: list[int]) -> list[int]:
+        stack = []   # stores indices
+        result = []
+        n = len(temperatures)
 
-    stack = []       # each element is a tuple : (temp, index)
+        for i in range(n-1, -1, -1):    # traverse from right to left
 
-    for currIndx, currNum in enumerate(temperatures):
-        
-        # If the stack is not empty and current element > stack top element, update the value in result list corresponding to the stack Top element
-        while stack and currNum > stack[-1][0]: 
+            # if the stack is empty means, no element in the right side, so push 0 to result[] and push current element index to stack (pushing index not the element as we wanted distances in the final result[])
+            if not stack:
+                result.append(0)
+                stack.append(i)
             
-            stackTop, stackTopIndx= stack.pop()    # popped element is a tuple (temp, index) , where stackTop = temp and stackTopIndx = indx
+            else: # stack not empty
+                """
+                - keep popping from stack until:- 
+                    - the stack has elements
+                    - until we get a bigger temperature
 
-            result[stackTopIndx] = currIndx - stackTopIndx   # Updating the value in result list corresponding to stackTop element index
+                - Note:- temperatures[stack[-1]]  is stack_top
+                """
+                while stack and temperatures[stack[-1]] <= temperatures[i]:   
+                    stack.pop()
+                
+                # for stack_top > temperature[i]
+                if not stack:      # empty, while popping if the stack becomes empty, means no temp on right is bigger, so append 0 to result[] and push current element's index to stack
+                    result.append(0)
+                    stack.append(i)
+
+                else:   # not empty, if stack has elements then the stack_top is the index of element whose value bigger than current element. So push distance between that element and current elemen to the result and push current element's index to stack
+                    result.append(stack[-1] - i)
+                    stack.append(i)
         
-        # if the stack is empty or the num < stackTop Element, then push current element to the stack
-        else:
-            stack.append((currNum, currIndx))   
-    
-    return result
+        return list(reversed(result))   # result[] we made is reverese from what we needed , so we reverse it get the desired output
 
-temperatures = [30,60,90]
-print(dailyTemperatures(temperatures))
+
+
+
+obj = Solution()
+temperatures = [73,74,75,71,69,72,76,73]
+print(obj.dailyTemperatures(temperatures))

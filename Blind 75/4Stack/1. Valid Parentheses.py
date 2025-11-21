@@ -76,4 +76,25 @@ s = "()[]{}"
 print(isValid(s))
 
 
+# ===================
+# Shorter to write
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        maps = {")": "(", "}": "{", "]": "["}
 
+        for i in s:
+            
+            # if it is a closing bracket , check it with the top of the stack if it's the corresponding opening bracket
+            if i in maps:
+                if not stack or maps[i] != stack.pop():   # if the stack is empty when we got the closing bracket OR top element is not the corresponding opening bracket, then return false
+                    return False
+            else:                                    # if not in maps , means it's opening bracket, so push it to stack
+                stack.append(i)
+           
+        return len(stack) == 0
+
+
+obj = Solution()
+s = "()"
+print(obj.isValid(s))
