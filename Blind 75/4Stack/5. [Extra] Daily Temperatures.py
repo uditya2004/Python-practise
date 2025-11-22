@@ -57,6 +57,7 @@ APPROACH:- Nearest Greater to Right Pattern
     - pop elements from the stack to compare if it's greater than current element
 """
 
+# Monotonic Stack:- Nearest Greater to the Right Pattern
 # TC:- O(N)
 # SC:- O(N)
 class Solution:

@@ -8,7 +8,7 @@ def carFleet(
     ) -> int:
 
     # Combining list position and speed in one list.
-    pair = [(p, s) for p, s in zip(position, speed)]  # List containing tuples as elements like [(positionOfCar, speedOfCar)]
+    pair = list(zip(position, speed))  # List containing tuples as elements like [(positionOfCar, speedOfCar)]
     
     # Sorting list in decending order by "position"
     pair.sort(reverse= True)                          # Sorts the list pair in descending order based on the first value of each tuple
@@ -22,11 +22,16 @@ def carFleet(
 
         stack.append(time_to_reach_target)
 
-        #  Car A .........Car B..........Car C
+        #  start.....Car A ......Car B..........Car C....Destination
         # stack[-1] -> time taken by Car B to reach the target
         # stack[-2] -> time taken by Car C to reach the target
         if len(stack) >= 2 and stack[-1] <= stack[-2]:   # if time taken by Car B <= Car C , then Car B will catch Car C in the journey and will become a fleet and move with the speed of Car C for the rest of the journey.
-            stack.pop()                                  # we keep Car C for further car's comparision and removes Car B from the list, so after removing the Car B , time taken by Car C is now the top
+            """
+            - # we keep Car C for further car's comparision and removes Car B from the list:
+                - as speed of car C didn't changed but speed of car B changed to the speed of C , 
+                - so car C is better for comparision, so after removing the Car B , time taken by Car C is now the top
+            """
+            stack.pop()                                  
     
     return len(stack)   # At the end, no. of cars left in the stack = no. of fleet formed during the journey.
 
