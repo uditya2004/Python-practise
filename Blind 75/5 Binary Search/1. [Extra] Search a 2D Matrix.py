@@ -76,19 +76,27 @@ def searchMatrix(matrix, target: int) -> bool:
     Column = len(matrix[0])
     
     low = 0
-    high = (Row * Column) - 1
+    """
+    - if we flatten the matrix, there will be m x n elements in the 1D array.
+    - So the last element index in this new 1D array will be m*n - 1
+    """
+    high = (Row * Column) - 1      
 
     while low <= high:
         mid = (low + high) // 2    # mid index of flattened 2D array
-
+        
+        # Convert mid to 2D:
         # calculating the 2D coordinate of the mid element in 2D array like (Row, Column)
         midRow = mid // Column
         midColumn = mid % Column
 
-        if matrix[midRow][midColumn] == target:
+        mid_value_2D = matrix[midRow][midColumn]
+
+        # now apply typical binary search logic
+        if mid_value_2D == target:
             return True
         
-        elif matrix[midRow][midColumn] < target:
+        elif mid_value_2D < target:
             low = mid + 1
         else:
             high = mid - 1
