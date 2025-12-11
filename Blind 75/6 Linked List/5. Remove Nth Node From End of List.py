@@ -1,7 +1,5 @@
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+from typing import Optional
+from helper import build_list, ListNode, print_list
 
 class Solution:
 
@@ -34,49 +32,43 @@ class Solution:
         
     #Method 2:- Best Solution (Single Pass)
     """
-    APPROACH
-    1. Create 2 pointers -> left and right
-    2. Left pointer points to the dummy node "0".
-    2. Move the "right" pointer "n" steps ahead of the left pointer
-    3. Now move both the pointer simultaneously one step at a time until "right" reaches "None". When "right" reaches "None", left pointer will reach one node behind the target node.
-    4. Delete the target node.
+        - Take a dummy node
+        - Take two pointer p1 and p2 , pointed at dummy node
+        - Move p2 pointer n time forward to give a headstart
+        - Then move both pointers together till p2 reaches the last element, then p1 would be behind the required element to delete
+        - delete element by setting p1.next = p1.next.next
+        - Return Dummy.next (as that is the head of the list)
+
+        Note:- 
+            - We use dummy node to deal with the edge case => Deleting the head element
+            - which can't be done as we would return head only (if we didn't use dummy node)
+
     """
-    def removeNthFromEnd(self, head, n: int): 
-        dummy = ListNode(0, head)       # The dummy node handles edge cases like removing the head.
-        left = dummy
-        right = head
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        dummy  = ListNode(0, head)
+        p1 = dummy
+        p2 = dummy
+
+        # Move one pointer n time forward
+        for i in range(0,n):
+            p2 = p2.next
         
-        #move the 2nd pointer n steps ahead
-        while n > 0 and right != None:  # 2 -> 1 
-            right = right.next
-            n -=1
-        
-        # move both the pointers ahead simultaneously until the 2nd pointer's next "None". When the 2nd pointer's next reaches "None", 1st pointer is one node behind the target node (node to delete)
-        while right != None:
-            left = left.next
-            right = right.next
-        
-        # deleting the target node:
-        left.next = left.next.next
+        # Moving oth pointers simultaneosly until p2 reaches last element
+        while p2 != None and p2.next != None:
+            p1 = p1.next
+            p2 = p2.next
+
+        # Performing deletion
+        p1.next = p1.next.next
 
         return dummy.next
 
-    def printing(self,head):
-        curr = head
-        while curr != None:
-            print(f'{curr.val} -> ', end = ' ')
-            curr = curr.next
-        print('None')
-
-"""
-this example is having error
-"""
-head = ListNode(1)
-head.next = ListNode(2)
-head.next.next = ListNode(3)
-head.next.next.next = ListNode(4)
-head.next.next.next.next = ListNode(5)
-
 obj = Solution()
-head = obj.removeNthFromEnd(head, 2)
-obj.printing(head)
+
+head = build_list([1,2,3,4,5])
+n = 2
+
+result = obj.removeNthFromEnd(head, n)
+
+print("Answer List:")
+print_list(result)

@@ -37,6 +37,8 @@ APPPROACH:
 - Take 2 pointers low = 0 and high = len(lst) - 1
 - Find the mid 
 
+- Property of Minimum element:- Minimum element will always lie unsorted side (either side will become unsorted if we count the current mid in it as well)
+
 - Now check lst[low] <= lst[mid]:
     - If yes, means mid is in the left sorted portion, So now only search the right sorted portion   (low = mid + 1)
     - If no, means mid is in the right sorted portion, So now only search in the left sorted portion (high = mid - 1)

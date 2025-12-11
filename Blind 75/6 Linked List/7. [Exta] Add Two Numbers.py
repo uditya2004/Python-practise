@@ -61,8 +61,8 @@ class Solution:
 
         carry = 0
         while curr1 != None or curr2 != None or carry !=0:
-            v1 = curr1.vaal if curr1 else 0    # if curr1 is None then take value as 0 , otherwise curr1.val
-            v2 = curr2.vaal if curr2 else 0    # if curr2 is None then take value as 0 , otherwise curr2.val
+            v1 = curr1.val if curr1 else 0    # if curr1 is None then take value as 0 , otherwise curr1.val
+            v2 = curr2.val if curr2 else 0    # if curr2 is None then take value as 0 , otherwise curr2.val
 
             # getting the sum
             add = carry + v1 + v2

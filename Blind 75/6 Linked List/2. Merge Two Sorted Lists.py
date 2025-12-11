@@ -1,54 +1,52 @@
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
 """
 1. Create a dummy Node = -1 and a pointer "curr" pointing to this node -> in the end we return "dummy.next", so this -1 node is of no use for us.
 2. We place 2 pointers at l1 and l2.
 3. Out of the 2 pointer get the smaller data node and add it to the dummy linked list, then move these 2 pointers
 """
+
+from typing import Optional
+from helper import build_list, ListNode, print_list
+
 class Solution:
-    def mergeTwoLists(self, list1, list2):  # list1 and list2 are the heads of the two list
-        dummy = ListNode(-1)
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:  # list1 and list2 are the heads of the two list
+        
+        dummy = ListNode()
         curr = dummy
 
-        l1 = list1
-        l2 = list2
+        p1 = list1
+        p2 = list2
 
-        while l1 != None and l2 != None:
-
-            if l1.val <= l2.val:
-                curr.next = l1
-                l1 = l1.next
-            else:
-                curr.next = l2
-                l2 = l2.next
+        while p1 != None and p2 != None:
             
-            curr = curr.next
+            # smaller will get appended + smaller pointer moves forward
+            if p1.val <= p2.val:
+                curr.next = ListNode(p1.val)
+                p1 = p1.next
+            else:
+                curr.next = ListNode(p2.val)
+                p2 = p2.next
 
-        while l1 != None:
-            curr.next = l1
-            l1 = l1.next
             curr = curr.next
+        
+        while p1 != None:
+            curr.next = ListNode(p1.val)
+            curr = curr.next
+            p1 = p1.next
 
-        while l2 != None:
-            curr.next = l2
-            l2 = l2.next
+        while p2 != None:
+            curr.next = ListNode(p2.val)
             curr = curr.next
+            p2 = p2.next
 
         return dummy.next
 
 
+obj = Solution()
 
+list1 = build_list([1,2,4])
+list2 = build_list([1,3,4])
 
+result = obj.mergeTwoLists(list1, list2)
 
-list1 = ListNode(1)
-list1.next = ListNode(2)
-list1.next.next = ListNode(4)
-
-list2 = ListNode(1)
-list2.next = ListNode(3)
-list2.next.next = ListNode(4)
-
-merged = Solution()
-merged = merged.mergeTwoLists(list1, list2)
+print("Merged List:")
+print_list(result)

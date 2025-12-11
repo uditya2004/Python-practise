@@ -4,7 +4,6 @@ SLOW FAST POINTER Use-case:-
 1. Cycle Detection in Linked List
     - Eg:- Detecting Duplicate Number in Array
 2. Finding the Middle of a Linked List
-3. Finding the Nth Node from the End
 """
 
 class Solution:
@@ -22,7 +21,7 @@ class Solution:
 
         2. Now place another slow pointer at the beginning of the formed Linked List
             - Move the 2nd and the 1st slow pointer 1 step at a time simultaneously , until both the slow pointers meet.
-            - the node at which they meet is the required answer.
+            - the node at which they meet is the required answer.   (FACT that the distance between new_slow and old_slow from the element at the start of cycle will be always same => can be proved mathematically)
         """
         # moving the fast and slow pointers until they meet
         slow = 0

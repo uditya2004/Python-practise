@@ -21,7 +21,10 @@ class LRUCache:
         self.left, self.right = Node(0,0), Node(0,0)                # created a dummy Node -> left and right
 
         # setting pointers of left and right Nodes
-        self.left.next, self.right.prev = self.right, self.left     # new nodes will be added in between these 2 dummy nodes
+        # new nodes will be added in between these 2 dummy nodes
+        # Doubly Linked List
+        self.left.next = self.right
+        self.right.prev = self.left
         
     # function to delete the node from the linked list
     def delete(self, Node):
