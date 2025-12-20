@@ -1,18 +1,8 @@
-from helper import ListNode
+import heapq
 
-class LRUCache:
+arr = [1,2,3,4]
 
-    def __init__(self, capacity: int):
-        
-
-    def get(self, key: int) -> int:
-        
-
-    def put(self, key: int, value: int) -> None:
-        
+heapq.heapify(arr)
 
 
-# Your LRUCache object will be instantiated and called as such:
-# obj = LRUCache(capacity)
-# param_1 = obj.get(key)
-# obj.put(key,value)
+heapq.hea
