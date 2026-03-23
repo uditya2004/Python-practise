@@ -1,7 +1,44 @@
+"""
+Our needs:-
+1. Access any element using it's key in O(1) ==> Only Dictionary can do this
+
+2. Remove the node from in between
+3. Remove the node from the end (LRU element removal on hitting full capacity)
+
+We need to do 2 and 3 operation in O(1) time ==> Can only be done using DOUBLY LINKED LIST
+
+========================================================
+APPROACH:
+- For storing element associated with key, we use Dictionary  ==> {key: ???}  =>> here ??? will be NODE reference, so we can easily access the node.
+- For keeping track of usage order of element we use double linked list
+
+- We use two dummy nodes at both the ends of Linked list to keep track of "head" and "tail" => Let's Say "LEFT_END" and "RIGHT_END"
+
+- LEFT_END represents:- Most recently used
+- RIGHT_END represents:- Least recently used
+
+- get(key):
+    - Remove the node associated with the key from the linked list
+    - Add it after "LEFT_END" Node
+    - access the elemen using dictionary => returndict[key]
+
+- put(key, value)
+    - if key in dictionary:
+        - Delete the node
+
+    - Add the new node after the "LEFT_END" Node
+    
+    - if len(Dictionary) > capacity:
+        - Remove element before "RIGHT_END"
+
+"""
+
+
+
 class Node:
     def __init__(self, key, val):
         # Data
-        self.key = key    
+        self.key = key     # We store "key" in the Node because when we remove Least recently used node from the tail, we need to know which key (associated with the removed node) to remove from the HashMap as well!
         self.val = val
 
         #Pointers
@@ -36,7 +73,7 @@ class LRUCache:
         prevNode.next = nextNode
         nextNode.prev = prevNode
 
-    # function to insert the given Node between the right node and the right Node's prev Node (becomes the last 2nd Node)
+    # function to insert the given Node between the right node and the right Node's prev Node (becomes the node before "right" node)
     def insert(self, Node):
         prevNode, nextNode = self.right.prev, self.right
 

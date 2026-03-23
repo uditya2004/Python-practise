@@ -71,7 +71,6 @@ class Solution:
             # if the stack is empty means, no element in the right side, so push 0 to result[] and push current element index to stack (pushing index not the element as we wanted distances in the final result[])
             if not stack:
                 result.append(0)
-                stack.append(i)
             
             else: # stack not empty
                 """
@@ -87,13 +86,17 @@ class Solution:
                 # for stack_top > temperature[i]
                 if not stack:      # empty, while popping if the stack becomes empty, means no temp on right is bigger, so append 0 to result[] and push current element's index to stack
                     result.append(0)
-                    stack.append(i)
 
-                else:   # not empty, if stack has elements then the stack_top is the index of element whose value bigger than current element. So push distance between that element and current elemen to the result and push current element's index to stack
+                else:   # not empty, if stack has elements then the stack_top is the index of element whose value bigger than current element. So push distance between that element and current element to the result.
                     result.append(stack[-1] - i)
-                    stack.append(i)
+
+            # appending current index before moving forward        
+            stack.append(i)
         
-        return list(reversed(result))   # result[] we made is reverese from what we needed , so we reverse it get the desired output
+        # result[] we made is reverese from what we needed , so we reverse it get the desired output
+        result.reverse()
+
+        return result   
 
 
 

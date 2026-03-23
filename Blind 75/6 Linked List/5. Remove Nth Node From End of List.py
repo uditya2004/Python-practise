@@ -53,7 +53,7 @@ class Solution:
         for i in range(0,n):
             p2 = p2.next
         
-        # Moving oth pointers simultaneosly until p2 reaches last element
+        # Moving both pointers simultaneosly until p2 reaches last element
         while p2 != None and p2.next != None:
             p1 = p1.next
             p2 = p2.next

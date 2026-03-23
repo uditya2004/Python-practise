@@ -113,9 +113,9 @@ class MinStack(object):
 
 # Best solution:- use a "difference encoding" strategy for storing values in the stack
 """
-We store:-
-    - in stack -> pushedElement - currentMin
-    - in "min" -> pushedElement
+We do Push Operation like:-
+    - in "stack" => "item_to_push - currentMin"
+    - in "min"  => "item_to_push"
 """
 # Time complexity: O(1) for all operations.
 # Space complexity: O(1)
@@ -129,7 +129,7 @@ class MinStack:
     def push(self, x: int) -> None:
 
         if not self.stack:           # if the stack is empty:- 
-            self.stack.append(0)     # 1. append "0" to the "stack"
+            self.stack.append(0)     # 1. append "0" to the "stack"  => Since we're setting self.min = x for the first element, the calculation becomes: stored_value = x - x = 0
             self.min = x             # 2. set the min = "variable to be pushed"
 
         else:                                  # If the stack not empty:- 
