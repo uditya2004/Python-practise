@@ -1,11 +1,9 @@
 from helper import *
 from typing import Optional
 
-# Brute Force
-# TC: O(N * N) => it visited each node so O(N), and for each not we find height , so O(N*N)
 """
 - Diameter:- 
-    - Length of the longest path between any two nodes (Note:- both of those nodes should always be leaf node )
+    - The diameter is the longest path between any two nodes — these two nodes can be leaf nodes, internal nodes, or even the root.
     - Diameter forming path can or cannot include "root node", both scenario possible
 
 APPROACH:
@@ -13,49 +11,46 @@ APPROACH:
     - then for the given node diameter is :- left_Height + right_Height
 
 - CASE:- 2 => Diameter forming path NOT including "root Node"
-    - then for the give node diameter can be:-
+    - then for the given node diameter can be:-
         - left_diameter OR
         - right diameter
 
         
 - SO for a given node diameter will be :- MAX (left_height + right_height,   left_diameter,      right_diameter )
 """
-# class Solution:
+# Brute Force
+#TC: O(N^2) -> For every root node we are calling "height" function
+# SC: O(H) -> where H is height of tree
+class Solution:
 
-#     # TC: O(N)
-#     def height(self, root: Optional[TreeNode]) -> int:
-#         if not root:
-#             return 0
-
-#         lh = self.height(root.left)
-#         rh = self.height(root.right)
-
-#         return max(lh, rh) + 1
-
-#     # TC: O(N)
-#     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-
-#         if not root:
-#             return 0
+    # TC: O(N)
+    def height(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
         
-#         #CASE 1
-#         left_height = self.height(root.left)
-#         right_height = self.height(root.right)
+        lh = self.height(root.left)
+        rh = self.height(root.right)
 
-#         diameter_through_root = left_height + right_height
+        return max(lh, rh) + 1
+    
+    # TC: O(N)
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        
+        diameter_through_root = self.height(root.left) + self.height(root.right)  # diameter_through_root = left_height + right_height
+        left_diameter = self.diameterOfBinaryTree(root.left)
+        right_diameter = self.diameterOfBinaryTree(root.right)
 
-#         # CASE 2
-#         left_diameter = self.diameterOfBinaryTree(root.left)
-#         right_diameter = self.diameterOfBinaryTree(root.right)
-
-#         return max(diameter_through_root, left_diameter, right_diameter)
+        # Answer would be the max(diameter_through_root, left_diameter, right_diameter)
+        return max(diameter_through_root, left_diameter, right_diameter)
 
 
 
-# obj = Solution()
+obj = Solution()
 
-# root = build_tree([1,2])
-# print(obj.diameterOfBinaryTree(root)) 
+root = build_tree([1,2])
+print(obj.diameterOfBinaryTree(root)) 
 
 #=========================================================
 """
@@ -68,11 +63,12 @@ APPROACH
 -------------------------------
 
 Reason:
-- As we traverse through the entire tree, while updating "res" => we will eventually find left_diameter and right_diameter along the recursion
-- So no need to find left and right diameter for each node
-
+- Every diameter will pass through a node so if we find all possible diameter_through_node while traversing the entire tree and return the maximum one, that will be our answer(biggest diameter)
 
 """
+# Optimized Solution
+# TC: (2N) = O(N)
+# SC: O(H), where H = height of the tree.
 class Solution:
 
     def __init__(self):
@@ -98,7 +94,7 @@ class Solution:
     # TC: O(N)
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
 
-        self.height(root)
+        self.height(root)   # TC: O(N)
 
         return self.res
 

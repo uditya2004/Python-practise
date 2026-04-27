@@ -38,16 +38,23 @@ class Solution:
 
     # Given a main tree root and subtree root, I can tell if subtree lies in main Tree
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        # If main tree is empty, subtree cannot exist
-        if not root:
-            return False
-        
-        # Check if trees rooted at this "root" node matches tree rooted at "subRoot" Node 
-        if self.isSame(root, subRoot):
+        """
+        - Base cases are handled properly:
+            - If both root and subRoot are None → True (empty tree is subtree of empty tree)
+            - If root exists but subRoot is None → True (empty tree is subtree of any tree)
+            - If root is None but subRoot exists → False (can't find a non-empty subtree in an empty tree)
+        """
+        if not root and not subRoot:
             return True
         
-         # Otherwise keep searching for the match in left or right subtree
+        if root and not subRoot:
+            return True
+        
+        if not root and subRoot:
+            return False
+        
         return (
+            self.isSame(root, subRoot) or
             self.isSubtree(root.left, subRoot) or
             self.isSubtree(root.right, subRoot)
         )

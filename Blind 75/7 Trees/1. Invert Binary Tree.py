@@ -10,7 +10,7 @@ class Solution:
         - For each node, we swap the left and right subtree.
         - Recursively call for the left and right children
     
-    - Edge Case:- if root root is None , return None
+    - Edge Case:- if root is None , return None
     """
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         # if the tree is empty return the root node itself
@@ -19,9 +19,7 @@ class Solution:
         
         # swap the left and right subtree
         # eg:- root.left is the root of left subtree, swaping it with right means swapping entire left subtree (not just single node)
-        tmp = root.left
-        root.left = root.right
-        root.right = tmp
+        root.left, root.right = root.right, root.left
 
         # recursively swap the child nodes of the current root's children
         self.invertTree(root.left)    # inverting the left subtree
