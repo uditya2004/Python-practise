@@ -43,6 +43,10 @@ def topKFrequent(nums, k):
     
     # Creating an array with frequency as it's index and storing all the element having same frequency at the same index in list container
     # arr = [[]] * (len(nums)+1)                  #Incorrect way :- all elements in arr will point to the same list. Modifying one of these lists will affect all of them because they are all references to the same object.
+    """
+    - The bucket array uses frequency as the index. So the question is: what's the maximum possible frequency?
+    - The maximum frequency any element can have is len(nums) — when all elements are the same.
+    """
     arr = [[] for i in range(len(nums) + 1)]      # Correct way
     for num,cnt in dict1.items():
         arr[cnt].append(num)
