@@ -38,7 +38,7 @@ def decode(s):
         
         while i < len(s):
 
-            #Finding the length of the string
+            #Finding the length of the string => This way of finding length covers the case where length is 2 digits like 10#ksksjsksjs
             j = i
             while s[j] != '#':  # move forward until we encounter a "#"
                 j += 1   
