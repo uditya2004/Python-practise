@@ -40,7 +40,11 @@ def longestConsecutive(nums):
     new_arr = set(nums)   #TC: O(N)  , put all the array elements into set (Use a Set for Fast Lookups)
 
     # Find the longest sequence
-    for element in nums:                 #TC: O(N)
+    """
+    - If we iterate over "nums", if nums has duplicates we process the same starting point multiple times.
+    - Hence we iterate over "new_arr" instead of the original list.
+    """
+    for element in new_arr:                 #TC: O(N)
         """
         - List Lookup:- Searching for an item in a list has a time complexity of O(n).
         - Set Lookup:- Searching for an item in a set has an average time complexity of O(1). Sets use a hash table, which allows for near-instantaneous lookups.
