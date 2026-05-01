@@ -4,7 +4,7 @@ A phrase is a palindrome if, after converting all uppercase letters into lowerca
 Given a string s, return true if it is a palindrome, or false otherwise.
 """
 #Using Two Pointers
-#TC: O(N/2) = O(N)
+#TC: O(N)
 #SC: O(1)
 def isPalindrome(s):
 
@@ -33,3 +33,42 @@ def isPalindrome(s):
 
 s = ""
 print(isPalindrome(s))
+
+
+#==============================
+# Method 2:- Inner loop
+#TC: O(N)
+#SC: O(1)
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        
+        # empty string is a palindrom
+        if len(s) == 0:
+            return True
+        
+        left = 0
+        right = len(s)-1
+
+        while left < right:
+
+            # move left till it reaches alphanumeric
+            while left < right and not s[left].isalnum():
+                left +=1
+
+            # move right till it reaches alphanumeric
+            while left < right and not s[right].isalnum():
+                right -=1
+
+            # now that both on alphanumeric, compare
+            if s[left].lower() != s[right].lower():
+                return False
+            else:
+                left +=1
+                right -=1
+        
+        return True
+            
+
+obj = Solution()
+s = "A man, a plan, a canal: Panama"
+print(obj.isPalindrome(s))
