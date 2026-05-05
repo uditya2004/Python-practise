@@ -117,6 +117,14 @@ def threeSum(nums):
                 low +=1
             else:
                 result.append([nums[i], nums[low], nums[high]])
+
+                """
+                - Now, if you only move one pointer
+                    - If you only move low up → the sum becomes larger
+                    - If you only move high down → the sum becomes smaller
+                - Either way, the sum will no longer be zero!
+                - So if you only move one pointer, you'll immediately need to move the other one on the next iteration anyway. Moving both at once is just more efficient 
+                """
                 low +=1
                 high -=1
 

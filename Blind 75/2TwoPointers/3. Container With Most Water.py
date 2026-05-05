@@ -57,14 +57,14 @@ def maxArea(height):
     while low<high:
         temp_vol = min(height[low], height[high]) * (high-low)
 
+        # update the max_vol seen so far
         max_vol = max(max_vol, temp_vol)
 
-        if height[low] < height[high]:
+        # we move smaller height one forward in search of bigger height.
+        if height[low] <= height[high]:
             low +=1
-        elif height[low] > height[high]:
-            high -=1
         else:
-            low +=1
+            high -=1
 
     return max_vol
 
