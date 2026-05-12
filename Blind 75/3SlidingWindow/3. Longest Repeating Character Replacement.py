@@ -1,8 +1,3 @@
-"""
-- You are given a string s and an integer k. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most k times.
-- s consists of only uppercase English letters.
-- Return the length of the longest substring containing the same letter you can get after performing the above operations.
-"""
 #Two Pointers:- Brute Force
 #TC: O(N^2)
 #SC: O(26) = O(1)
@@ -10,7 +5,7 @@ def characterReplacement(s, k):
     
     res = 0
     for i in range(0,len(s)):
-        hash = {}             # In worst case it can store all unique alphabet i.e 26 . SC(26)
+        hash = {}        # {element: freq} . In worst case it can store all unique alphabet i.e 26 . SC(26)
         max_freq = 0
 
         for j in range(i, len(s)):
@@ -31,6 +26,20 @@ k = 1
 print(characterReplacement(s, k))
 
 #=================
+"""
+- Use a sliding window with left pointer i and right pointer j
+- Keep a hash map to count character frequencies in the current window
+- Track max_freq = max frequency of any character seen so far (only update upwards, never shrink it)
+
+(Note -> (j - i + 1) - max_freq = Number of replacements needed) 
+
+- Validity condition: (j - i + 1) - max_freq <= k → window is valid
+- Invalid condition: (j - i + 1) - max_freq > k → shrink from left
+    - Decrease hash[s[i]] by 1
+    - Increment i
+
+- After ensuring validity, update res = max(res, j - i + 1)
+"""
 #Best Solution Sliding window
 # TC: O(N)
 # SC: O(26) = O(1)
