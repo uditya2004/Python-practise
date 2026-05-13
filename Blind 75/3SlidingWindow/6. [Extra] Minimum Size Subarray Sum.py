@@ -1,3 +1,6 @@
+"""
+https://leetcode.com/problems/minimum-size-subarray-sum/description/
+"""
 class Solution:
     def minSubArrayLen(self, target: int, nums: list[int]) -> int:
         i = 0
@@ -5,13 +8,15 @@ class Solution:
 
         currSum = 0
         for j in range(0,len(nums)):
-
             currSum += nums[j]
             
             # Until the currsum >= target we keep on shrinking the window and update the minLength along the way.
             while currSum >= target:
-                minLength = min(minLength, j-i+1)
-                currSum -=nums[i]
+                # update the result, as this is a valid window
+                minLength = min(minLength, j-i+1)  
+                
+                # shrink the i
+                currSum -=nums[i]                  
                 i+=1
         
         if minLength == float('inf'):  # no such subarray found

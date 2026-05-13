@@ -8,52 +8,40 @@
 
 # Method:- Using Fixed window size sliding window technique
 
-#TC: O(2n + m) =  O(m) , where n = len(s1), m = len(s2)
+# TC: O(n + m)
 # SC: O(1)
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        # len(s1) > len(s2) then permutations of s1 can't exist in s2
+        
         if len(s1) > len(s2):
             return False
-            
-        hash1 = [0] * 26   # contains signature of s1
-        hash2 = [0]*26     # contains current window signature
+        
+        # building signature of s1
+        hash1 = [0]*26
+        for ch in s1:
+            hash1[ord(ch) - ord('a')] +=1
+        
 
-        # make signature of s1 in hash array
-        for i in range(len(s1)):
-            hash1[ord(s1[i]) - ord('a')] +=1
-
-        # building the initial window -> by moving j till len(s1) and building hash2
+        hash2 = [0]*26
         i = 0 
-        j = 0
-        for x in range(len(s1)):
-            hash2[ord(s2[j]) - ord('a')] +=1
-            j+=1
-        
-        # checking initial window
-        if hash1 == hash2:
-            # permutation found
-            return True
-        
-        while j < len(s2):
+        for j, item in enumerate(s2):
+            # Add current element at j to window
+            hash2[ord(item) - ord('a')] +=1
 
-            # making current window
-            hash2[ord(s2[j]) - ord('a')] +=1  # adding element at j
-            hash2[ord(s2[i]) - ord('a')] -=1  # removing element at i
+            # If window size exceeds len(s1), shrink from left
+            if j-i+1 > len(s1):
+                hash2[ord(s2[i]) - ord('a')] -=1
+                i +=1
             
-            # checking current window
-            if hash1 == hash2:
-                # permutation found
+            # Check if window size equals len(s1) and signatures match
+            if j-i+1 == len(s1) and hash1 == hash2:
+                # valid window
                 return True
-            
-            # preparing next window by moving pointers
-            i +=1
-            j +=1
-            
+        
         return False
 
 
 obj = Solution()
-s1 = "ab"
-s2 = "eidboaoo"
+s1 = "ab" 
+s2 = "eidbaooo"
 print(obj.checkInclusion(s1, s2))

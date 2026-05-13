@@ -1,4 +1,5 @@
 """
+QUESTION
 Given an array of integers arr[]  and a number k. Return the maximum sum of a subarray of size k.
 
 Note: A subarray is a contiguous part of any given array.
@@ -10,33 +11,30 @@ Output: 700
 Explanation: arr2 + arr3 = 700, which is maximum.
 """
 
+# TC: O(N)
+# SC: O(1)
+# FIXED SIZED SLIDING WINDOW OF SIZE -> K
 class Solution:
     def maxSubarraySum(self, arr, k):
         maxSum = float('-inf')
+        currSum = 0
 
-        n = len(arr)
         i = 0
-        j = 0
-        sum = 0
-        
-        while j < n:
+        for j, item in enumerate(arr):
+            # adding the current element of j
+            currSum += item
 
-            # add arr[j] to sum
-            sum += arr[j]
-
-            # Then check condition
-            # 1. If windows size less than k, only move j
-            if (j-i+1) < k:  
-                j +=1
-
-            # 2. If window size equals k, it is a valid window, So update the maxSum value, remove element from back, move both pointers forward
-            else:   
-                maxSum = max(maxSum, sum)
-                sum -= arr[i]
-                j +=1
+            # if the window size > k , we move i one time, as it's fixed sized window, window will outgrow only by 1 unit
+            if j-i+1 > k:
+                currSum -= arr[i]
                 i +=1
             
+            # if window size == k, it is a valid window, update result
+            if j-i+1 == k:
+                maxSum = max(maxSum, currSum)
+        
         return maxSum
+
 
 
 obj = Solution()
