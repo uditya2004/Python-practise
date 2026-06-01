@@ -1,12 +1,15 @@
 """
 APPROACH
-- From the currently standing building we find smaller building than this on both the side , this will give the maxium width of our rectangle possible w.r.t current building
-- So we do following:-
-    - Build right[] :- Nearest smaller to the right array
-    - Build left[] :- Nearest smaller to the left array
-    - width[]:- right[i] - left[i] - 1
-    - area[]:- width[i] * heights
-    - Then find the max(area)
+- For each building in "heights" array => we find how much we can expand it to left and right, keeping height as same.
+    - For this we do like this:
+        - Keep moving to right till you find a building whose height smaller than current
+        - Keep moving to left till you find a building whose height smaller than current.
+    - This way :
+        - "height" we get from => current building height
+        - "width" we get from => how far we are able to stretch left and right
+    - Now, area = height * width
+
+- Finally return maximum area seen so far.
 """
 
 # Combination of Nearest smaller to right and left pattern
@@ -15,7 +18,7 @@ class Solution:
     def largestRectangleArea(self, heights: list[int]) -> int:
         n = len(heights)
         
-        # Nearest smaller to right
+        # Nearest smaller to right -> give how far we can stretch to the right
         rightMost = []   # store index
         stack = []
         for i in range (n-1, -1, -1):
@@ -36,7 +39,7 @@ class Solution:
         rightMost = list(reversed(rightMost))
 
         # ====================================================
-        # Nearest smaller to left
+        # Nearest smaller to left -> give how far we can stretch to the left
         leftMost = []   # store index
         stack = []
         for i in range (0, n):
