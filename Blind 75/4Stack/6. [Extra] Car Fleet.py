@@ -10,8 +10,8 @@ def carFleet(
     # Combining list position and speed in one list.
     pair = list(zip(position, speed))  # List containing tuples as elements like [(positionOfCar, speedOfCar)]
     
-    # Sorting list in decending order by "position"
-    pair.sort(reverse= True)                          # Sorts the list pair in descending order based on the first value of each tuple
+    # Sorting list in decending order by "position". Car closer to destinations comes to pair[0]. Car farther from destination becomes pair[-1]
+    pair.sort(reverse= True)            # Sorts the list pair in descending order based on the first value of each tuple
     
     stack = []
 
