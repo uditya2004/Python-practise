@@ -1,5 +1,5 @@
 """
-- As there can be multiple (value, timestamp) pair associated with same key, we make datastructure like this:-
+- As there can be multiple (value, timestamp) pair associated with same key, we make data-structure like this:-
     dict = {key: [(timestamp, value), (timestamp, value), (timestamp, value),]}
 
 - As we have to find value with timestamp <= give_timestamp and timestamp is inserted in increasing order, hence we are doing searching in sorted array, so apply binary search.
