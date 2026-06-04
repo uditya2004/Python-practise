@@ -1,38 +1,47 @@
+"""
+- As there can be multiple (value, timestamp) pair associated with same key, we make datastructure like this:-
+    dict = {key: [(timestamp, value), (timestamp, value), (timestamp, value),]}
+
+- As we have to find value with timestamp <= give_timestamp and timestamp is inserted in increasing order, hence we are doing searching in sorted array, so apply binary search.
+"""
+
 class TimeMap:
 
     def __init__(self):
-        self.store = {}        
-
+        self.dict = {}
 
     def set(self, key: str, value: str, timestamp: int) -> None:
-        if key not in self.store:   # if not already present in the dictionary , we create a key with empty list in which we can append
-            self.store[key] = []  
-        
-        self.store[key].append([value, timestamp])   # append the new value to the list associated with a key
+        # if the key not in "dict", it creates => dict = {key : []}
+        if key not in self.dict:
+            self.dict[key] = []
 
+        # we append the (timestamp, value) pair in the list associated with the pair
+        self.dict[key].append((timestamp, value))    # pair can be stored like (timestamp, value) or (value, timestamp) doesn't matter
 
     def get(self, key: str, timestamp: int) -> str:
-        res = ""
-        values = self.store.get(key, [])
+        # if key not in dict, return "" as per question
+        if key not in self.dict:
+            return ""
 
-        # binary search  value = [[bar, 1], [bar, 4], [bar, 5]]   -> [value, timestamp]
-        low = 0
-        high = len(values) - 1
+        # if key present in dict => apply binary search in list associated with key, for getting nearest_timestamp to given_timestamp 
+        value = self.dict[key]
+        left = 0
+        right = len(value) - 1
+        result = ""
 
-        while low <= high:
-            mid = (low + high) // 2
+        while left <= right:
+            mid = (left + right) // 2
 
-            if values[mid][1] <= timestamp:
-                res = values[mid][0]    # this value is a candidate 
-                low = mid + 1           # try to find a better (larger) candidate to the right, as it's in sorted order
-
+            if value[mid][0] <= timestamp:   # value at mid is a possible answer
+                result = value[mid][1]       # update result with new value
+                left = mid + 1               # we aim for higher timestamp now, so move towards right portion       
             else:
-                high = mid - 1          # if timestamp at mid is larger , we search towards the left for smaller timestamp, as it's in sorted order.
+                right = mid - 1              # if timestamp at mid is larger, we want to minimize it, hence move towards left portion.
         
-        return res
+        return result
 
 
-# Your TimeMap object will be instantiated and called as such:
 obj = TimeMap()
-obj.set("foo", "bar", 1)   # (key, value, timestamp)
+obj.set("foo","bar", 1)  # (key, value, timestamp)
 param_2 = obj.get("foo", 1)
+
