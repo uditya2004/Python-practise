@@ -1,5 +1,10 @@
 """
-- Question:- Array is sorted , count the no. of occurance of target in the given array
+- Question:- Array is sorted , count the no. of occurence of target in the given array
+
+APPROACH:
+- If the array is sorted:
+    - All the same elements stays together as group
+    - So just find the start and end index of this group and do => end - start + 1 to get the count 
 """
 # Solution 1
 class Solution:
@@ -14,7 +19,7 @@ class Solution:
 
             if arr[mid] == target:
                 firstOccurence = mid
-                right = mid - 1
+                right = mid - 1        # once the element is found, to get start index, we aim for lower index, hence move in left portion
             
             elif arr[mid] < target:
                 left = mid + 1
@@ -30,7 +35,7 @@ class Solution:
 
             if arr[mid] == target:
                 lastOccurence = mid
-                left = mid + 1
+                left = mid + 1        # once the element is found, to get end index, we aim for higher index, hence move in right portion
             elif arr[mid] < target:
                 left = mid + 1
             
