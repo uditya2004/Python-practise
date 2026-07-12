@@ -16,7 +16,12 @@ APPROACH:
         - right diameter
 
         
-- SO for a given node diameter will be :- MAX (left_height + right_height,   left_diameter,      right_diameter )
+- SO for a given node diameter will be :- MAX (left_height + right_height + 2,   left_diameter,      right_diameter )
+
+- Here (edge-count definition):
+    - height(null) = -1
+    - height(leaf) = 0
+    - diameter_through_node = left_height + right_height + 2
 """
 # Brute Force
 #TC: O(N^2) -> For every root node we are calling "height" function
@@ -24,9 +29,10 @@ APPROACH:
 class Solution:
 
     # TC: O(N)
+    # Edge-count definition: height(null) = -1, height(leaf) = 0
     def height(self, root: Optional[TreeNode]) -> int:
         if not root:
-            return 0
+            return -1
         
         lh = self.height(root.left)
         rh = self.height(root.right)
@@ -38,7 +44,7 @@ class Solution:
         if not root:
             return 0
         
-        diameter_through_root = self.height(root.left) + self.height(root.right)  # diameter_through_root = left_height + right_height
+        diameter_through_root = self.height(root.left) + self.height(root.right) + 2  # diameter_through_root = left_height + right_height + 2
         left_diameter = self.diameterOfBinaryTree(root.left)
         right_diameter = self.diameterOfBinaryTree(root.right)
 
@@ -67,7 +73,7 @@ Reason:
 
 """
 # Optimized Solution
-# TC: (2N) = O(N)
+# TC: O(N) -> height() visits each node exactly once
 # SC: O(H), where H = height of the tree.
 class Solution:
 
@@ -75,16 +81,17 @@ class Solution:
         self.res = 0
 
     # TC: O(N)
+    # Edge-count definition: height(null) = -1, height(leaf) = 0
     def height(self, root: Optional[TreeNode]) -> int:
         if not root:
-            return 0
+            return -1
 
         lh = self.height(root.left)
         rh = self.height(root.right)
 
         # EXTRA LINE -> Calculating diameter in height function directly
-        # Even though height counts nodes, lh + rh naturally becomes an edge count.
-        diameter_through_root = lh + rh
+        # diameter_through_node = lh + rh + 2  (edges on left path + edges on right path + 2 edges connecting subtrees to current node)
+        diameter_through_root = lh + rh + 2
 
         #Updating "res"
         self.res = max(self.res, diameter_through_root)
