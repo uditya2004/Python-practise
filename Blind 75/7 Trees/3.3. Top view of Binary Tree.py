@@ -7,13 +7,13 @@ CONCEPT: Top View of a Binary Tree
 
 The "top view" is what you see when you look at the tree from directly above.
 
-KEY IDEA — Horizontal Distance (HD):
+CONCEPT — Horizontal Distance (HD):
   - Assign every node a horizontal distance relative to the root.
-  - Root         → HD = 0
-  - Left child   → parent's HD - 1
-  - Right child  → parent's HD + 1
+    - Root         → HD = 0
+    - Left child   → parent's HD => - 1
+    - Right child  → parent's HD => + 1
 
-  Example tree built from [3, 9, 20, 15, 7]:
+Example tree built from [3, 9, 20, 15, 7]:
 
           3         HD:  0
          / \\
@@ -58,7 +58,7 @@ class Solution:
                 q.append((node.right, hd + 1))
 
         # Return values sorted by horizontal distance (left to right)
-        return [hd_map[hd] for hd in sorted(hd_map)]
+        return [hd_map[hd] for hd in sorted(hd_map)]  # sorted the dict as per Horizontal distance
 
 
 
