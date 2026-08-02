@@ -44,21 +44,48 @@ class Solution:
             - If root exists but subRoot is None → True (empty tree is subtree of any tree)
             - If root is None but subRoot exists → False (can't find a non-empty subtree in an empty tree)
         """
-        if not root and not subRoot:
-            return True
-        
-        if root and not subRoot:
-            return True
+        if (not root and not subRoot) or (root and not subRoot):
+                    return True
         
         if not root and subRoot:
             return False
         
-        return (
-            self.isSame(root, subRoot) or
-            self.isSubtree(root.left, subRoot) or
-            self.isSubtree(root.right, subRoot)
-        )
+        if self.isSame(root, subRoot):
+            return True
 
+        # now same above process we have to repeat for left and right subtree
+        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
+
+
+
+obj = Solution()
+root = build_tree([3,4,5,1,2])
+subRoot = build_tree([4,1,2])
+print(obj.isSubtree(root, subRoot)) 
+
+
+# ======================================
+# Just a Shorter way of writing this
+class Solution:
+
+    # Given two nodes of different tree , I can tell -> "is the tree rooted to these two nodes exactly same"
+    def isSame(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        if not p and not q:
+            return True
+        if not p or not q:
+            return False
+
+        return (p.val == q.val) and self.isSame(p.left, q.left) and self.isSame(p.right, q.right)
+
+    # Given a main tree root and subtree root, I can tell if subtree lies in main Tree
+    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+        if not subRoot:
+            return True
+        if not root:
+            return False
+        if self.isSame(root, subRoot):
+            return True
+        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
 
 
 obj = Solution()
