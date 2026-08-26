@@ -32,9 +32,10 @@ class Solution:
 
             # 3. Record the valid result
             if j-i+1 == k:
-                if currNegative:
+                if currNegative:  
                     result.append(currNegative[0])
                 else:
+                    # As per question, if no negative element in window then report 0   
                     result.append(0)
 
             # 4. Move
