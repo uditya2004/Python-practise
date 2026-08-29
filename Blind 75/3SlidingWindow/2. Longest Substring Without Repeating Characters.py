@@ -25,7 +25,6 @@ def lengthOfLongestSubstring(s):
     return length
 
 
-
 s = "pwwkew"  #Expected output :- 1
 print(lengthOfLongestSubstring(s))
 
