@@ -30,81 +30,84 @@ s = "pwwkew"  #Expected output :- 1
 print(lengthOfLongestSubstring(s))
 
 #=========================
-# Method 2:- Sliding window with set
-"""
-TC:- O(2N)  = O(N)
-    - The right pointer moves from 0 to n-1, visiting each character exactly once.
-    - The left pointer also moves from 0 to at most n-1
-
-SC:- O(N) => If all characters are unique, the set holds n characters
-"""
+# Method 2:- Variable Size Sliding Window
+# TC: O(2N) = O(N) => j move n times
+#                     i moves at most n times in total (amortized O(1) per step)
+# SC: O(1)
 class Solution:
+
     def lengthOfLongestSubstring(self, s: str) -> int:
-        occur = set()
+        result = 0  # length of longest substring
 
-        maxLength = 0
         n = len(s)
+        hash = {}   # { value: count }
+        i = 0
+        j = 0
+        while j < n:
+            # 1. calculation
+            # Add element frequency to hash
+            hash[s[j]] = hash.get(s[j], 0) + 1
 
-        left = 0
-        right = 0
-        while left <= right and left <  n and right < n:
-            if s[right] in occur:
-                # move the left pointer till we remove duplicate element from the window
-                while s[right] in occur:
-                    occur.remove(s[left])
-                    left +=1
+            # 2. shrink
+            # if the element frequency is > 1, that means we have duplicate, so move i until we remove duplicate
+            while hash[s[j]] > 1:  
+                hash[s[i]] -=1    # reduce s[i] frequency
 
-            if s[right] not in occur:
-                occur.add(s[right])    # Adding the s[right] element to set
-                maxLength = max(maxLength, (right - left) + 1)   # Updating the maxlength
-                right +=1   # moving right forwards
-        
-        return maxLength
+                if hash[s[i]] == 0:  # while reducing freqency, if frequency becomes 0, then remove the element from hash
+                    del hash[s[i]]
 
+                i +=1
 
-obj = Solution()
-s = "pwwkew"
-print(obj.lengthOfLongestSubstring(s))
+            # 3. record
+            # when the frequency again becomes 1, means removed duplicate, so window size is candidate answer to record
+            if hash[s[j]] == 1:
+                result = max(result, j-i+1)
 
+            # 4. move
+            j +=1
 
-#=========================
-#Method 3:- Using 2 pointers Sliding window :- Best Solution
-"""
-- We can optimize method 2 by educing the number of operations:
-    - Method 2 may move left one step at a time when a duplicate is found. 
-    - But We can jump directly to the position after the duplicate using a hashmap instead of a set.
-"""
-#TC: O(N)
-#SC: O(N)
-
-class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        hash = {}
-        maxlength = 0
-        n = len(s)
-
-        left = 0 
-        right = 0
-        while left <= right and left < n and right < n:
-            
-            # If the character is already present in the dictionary and is between left and right , then current element (s[right]) is a duplicate
-            if s[right] in hash and hash[s[right]] >= left:
-                # we move the left pointer ahead of the duplicate element index
-                left = hash[s[right]] + 1
-
-            # Update the last seen index of current character (overwrite)
-            hash[s[right]] = right
-
-            # Update max length
-            maxlength = max(maxlength, (right - left) + 1)
-
-            # move right pointer forward
-            right +=1
-        
-        return maxlength
-
+        return result
 
 
 obj = Solution()
 s = "abcabcbb"
+print(obj.lengthOfLongestSubstring(s))
+
+#=========================================
+# Method 3:- Best solution => we reduced inner while loop to simply "if condition"
+# TC:- O(N)  => j moves n times; i jumps in O(1)
+# SC:- O(1)
+class Solution:
+
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        result = 0  # length of longest substring
+
+        hash = {}    # { value: index }
+
+        n = len(s)
+        i = 0
+        j = 0
+        while j < n:
+
+            # If the element s[j] is already in hash and is last seen inside the window, then s[j] is a duplicate element, so we move i ahead of last seen index of s[j] i.e i = hash[s[j]] + 1
+            """
+            - The dict holds the last index of every character ever seen — including ones that already fell outside the window.  That's why we add extra condition "and hash[s[j]] >= i"
+            """
+            if s[j] in hash and hash[s[j]] >= i:
+                i = hash[s[j]] + 1
+
+            # Update the last seen index of current character (overwrite)
+            hash[s[j]] = j
+
+            # Update max length
+            result = max(result, j-i+1)
+
+            # move
+            j +=1
+
+        return result
+
+
+obj = Solution()
+s = "baaabca"
 print(obj.lengthOfLongestSubstring(s))
