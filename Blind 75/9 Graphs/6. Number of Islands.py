@@ -2,6 +2,7 @@
 # TC: O(M*N), where m = rows and n = columns in a grid
 # SC: O(M*N), in worst case all cells are 1's for recursive call stack of size M*N
 class Solution:
+    
     def numIslands(self, grid: list[list[str]]) -> int:
         if not grid:
             return 0
@@ -17,10 +18,7 @@ class Solution:
             if r < 0 or r >= row or c < 0 or c >= column or grid[r][c] == "0":
                 return
             
-            """
-            - If reacher here means:- (r,c) is in bound and grid[r][c] == "1" means it's a land. So we do:-
-                - Mark as visited by changing 1 to 0 of element grid[r][c]
-            """
+            # Mark as visited by changing 1 to 0 of element grid[r][c] => SINK THE VISITED LAND
             grid[r][c] = "0"
 
             # Explore all 4 directions for land

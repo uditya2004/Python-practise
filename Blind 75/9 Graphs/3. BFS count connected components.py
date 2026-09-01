@@ -1,13 +1,23 @@
 """
-SAME AS LEVEL ORDER TRAVERSAL IN TREE (extra thing we do here is keep track of visited nodes, so we don't repeat nodes)
+ALGO
+- Traverse each node in the adjacency list.
+- For every node, check whether it is visited.
+- If the node is not visited:
+    - Start BFS/DFS from that node.
+    - Increase the connected component count by 1.
+- BFS/DFS visits and marks all nodes visited = True , from the starting node.
+- Nodes still unvisited after that belong to another disconnected component.
 
-WAY OF PRINTING
-- Print Root:
-    - Then print all the Nodes connected to Root, then there connected nodes etc.
-
-NOTE: Each node is printed only once
+NOTE:- We share the same "visited" list for each BFS function call. So it remain persistent across the BFS function calls
 """
 
+"""
+- TC: O(V+E)
+- SC: O(V)
+      - visited list      => O(V), one boolean per node
+      - queue             => O(V) worst case (star graph: all neighbours queued at once)
+      - count             => O(1)
+"""
 from collections import deque
 
 class Solution:
@@ -29,16 +39,6 @@ class Solution:
     
     def countConnectedComp(self, adj: list[list[int]])-> int:
         visited = [False] * len(adj)
-        
-        """
-        - We traverse each index of "adj" list (i.e node value)
-        - For each node:
-            - we check => if it's not visited, then => we call BFS with "start" node as this node
-        
-        - We share the same "visited" list for each BFS function call.
-        - On each BFS function call:
-            - It marks the elements visited in each call
-        """
 
         count = 0
         for node in range(len(adj)):    
